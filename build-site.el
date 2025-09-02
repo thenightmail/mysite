@@ -21,7 +21,7 @@
        (list "my-org-site"
              :recursive t
              :base-directory "./content"
-             :publishing-directory "./public"
+             :publishing-directory "./docs"
              :with-author nil
              :with-toc nil
              :section-numbers nil

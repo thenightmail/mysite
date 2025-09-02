@@ -1,0 +1,23 @@
+* [[file:index.org][index]]
+* git baby steps
+<2025-08-24 Sun>
+
+These notes are meant to serve as a roadmap for people that come after me, and
+are looking to learn enough to be useful and contribute to git.
+** [[https://github.com/ragtux/cnility][k&r]]
+Understanding c thoroughly is important. Treat this as a sacred text.
+** [[https://bitbucket.org/jacobstopak/baby-git][baby-git]]
+Understanding gits initial commit is something that you are able to do much
+easier than reading the current entire codebase.
+** [[https://git-scm.com/book/en/v2][pro git book]]
+Read this so that you can start learning everything about git. Treat this as one
+of your sacred texts.
+** [[https://git.github.io/GSoC-Participants/][past git GSoC contributors]]
+This is a great resource, it might make sense to review previous work done in
+order to familiarize oneself with the process.
+** [[https://git.github.io/][git developer pages]]
+Use these pages to get a grip on contributing to git.
+** [[https://public-inbox.org/git/?q=%23leftoverbits][#leftoverbits]]
+Search for this in the mailing list to find potential things you can do.
+** [[https://lore.kernel.org/git/CAOLa=ZSHETyzEyyJvP-VT9CbvrJt_jV65nEyCOzR3YGRgFNkrQ@mail.gmail.com/T/#t][GSoC application announcement]]
+The GSoC applications for 2025 were due in February.

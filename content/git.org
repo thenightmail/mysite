@@ -1,3 +1,4 @@
+#+title: git
 * [[file:index.org][index]]
 * day 1
 :LOGBOOK:
@@ -25,6 +26,29 @@ Still I have to read through;
 ** [[https://gitexercises.fracz.com/][git exercises]]
 I started this a while ago but still need to finish them. I think I could go
 through them all again.
+** TIL about git shortlog
+This feature is awesome, you can use it to easily see how many commits people
+are making to a repository. With the command
+#+begin_src sh
+git shortlog -ns
+#+end_src
+you are able to see who has committed the most to a repository. Here is the
+output of that command on the git repo;
+#+begin_example
+ 27457  Junio C Hamano
+  4611  Jeff King
+  2390  Johannes Schindelin
+  1945  Ævar Arnfjörð Bjarmason
+  1824  Nguyễn Thái Ngọc Duy
+  1810  Patrick Steinhardt
+  1401  Shawn O. Pearce
+  1314  René Scharfe
+  1203  Elijah Newren
+  1118  Linus Torvalds
+   954  Michael Haggerty
+   902  brian m. carlson
+#+end_example
+Fascinating. Junio C Hamano is legendary!
 * git baby steps
 <2025-08-24 Sun>
 

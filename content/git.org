@@ -1,4 +1,30 @@
 * [[file:index.org][index]]
+* day 1
+:LOGBOOK:
+CLOCK: [2025-10-13 Mon 12:56]
+:END:
+<2025-10-13 Mon>
+
+Today marks my first day in an experiment i'm conducting on myself. The goal is
+to spend at least one hour every day involved in learning about git. Before
+starting this, I have done some collecting of sources, and some reading of how
+to use git. My abilities with git are good enough for keeping configuration
+repositories between my desktop and my laptop, but I still am barely grasping
+how git works internally.
+
+** [[https://git-scm.com/book/en/v2][pro git]]
+Still I have to read through;
+
+- Distributed Git
+- GitHub
+- Git Tools
+- Customizing Git
+- Git and Other Systems
+- Git Internals
+
+** [[https://gitexercises.fracz.com/][git exercises]]
+I started this a while ago but still need to finish them. I think I could go
+through them all again.
 * git baby steps
 <2025-08-24 Sun>
 

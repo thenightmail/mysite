@@ -2,7 +2,7 @@
 * [[file:index.org][index]]
 * day 1
 :LOGBOOK:
-CLOCK: [2025-10-13 Mon 12:56]
+CLOCK: [2025-10-13 Mon 12:56]--[2025-10-13 Mon 13:47] =>  0:51
 :END:
 <2025-10-13 Mon>
 

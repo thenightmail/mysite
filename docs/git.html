@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>&lrm;</title>
+<title>git</title>
 <meta name="generator" content="Org Mode" />
 <style type="text/css">
   #content { max-width: 60em; margin: auto; }
@@ -194,12 +194,13 @@
 </head>
 <body>
 <div id="content" class="content">
-<div id="outline-container-org9940d3b" class="outline-2">
-<h2 id="org9940d3b"><a href="index.html">index</a></h2>
+<h1 class="title">git</h1>
+<div id="outline-container-org85b5e3f" class="outline-2">
+<h2 id="org85b5e3f"><a href="index.html">index</a></h2>
 </div>
-<div id="outline-container-orgec1f8c1" class="outline-2">
-<h2 id="orgec1f8c1">day 1</h2>
-<div class="outline-text-2" id="text-orgec1f8c1">
+<div id="outline-container-orgd44442f" class="outline-2">
+<h2 id="orgd44442f">day 1</h2>
+<div class="outline-text-2" id="text-orgd44442f">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-10-13 Mon&gt;</span></span>
 </p>
@@ -213,9 +214,9 @@ repositories between my desktop and my laptop, but I still am barely grasping
 how git works internally.
 </p>
 </div>
-<div id="outline-container-org9e4bff5" class="outline-3">
-<h3 id="org9e4bff5"><a href="https://git-scm.com/book/en/v2">pro git</a></h3>
-<div class="outline-text-3" id="text-org9e4bff5">
+<div id="outline-container-org3f275a4" class="outline-3">
+<h3 id="org3f275a4"><a href="https://git-scm.com/book/en/v2">pro git</a></h3>
+<div class="outline-text-3" id="text-org3f275a4">
 <p>
 Still I have to read through;
 </p>
@@ -230,19 +231,53 @@ Still I have to read through;
 </ul>
 </div>
 </div>
-<div id="outline-container-org27098e0" class="outline-3">
-<h3 id="org27098e0"><a href="https://gitexercises.fracz.com/">git exercises</a></h3>
-<div class="outline-text-3" id="text-org27098e0">
+<div id="outline-container-org0288b48" class="outline-3">
+<h3 id="org0288b48"><a href="https://gitexercises.fracz.com/">git exercises</a></h3>
+<div class="outline-text-3" id="text-org0288b48">
 <p>
 I started this a while ago but still need to finish them. I think I could go
 through them all again.
 </p>
 </div>
 </div>
+<div id="outline-container-orgcff0438" class="outline-3">
+<h3 id="orgcff0438">TIL about git shortlog</h3>
+<div class="outline-text-3" id="text-orgcff0438">
+<p>
+This feature is awesome, you can use it to easily see how many commits people
+are making to a repository. With the command
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">git shortlog -ns
+</pre>
 </div>
-<div id="outline-container-orgb5d6ba5" class="outline-2">
-<h2 id="orgb5d6ba5">git baby steps</h2>
-<div class="outline-text-2" id="text-orgb5d6ba5">
+<p>
+you are able to see who has committed the most to a repository. Here is the
+output of that command on the git repo;
+</p>
+<pre class="example" id="orgf8095d1">
+27457  Junio C Hamano
+ 4611  Jeff King
+ 2390  Johannes Schindelin
+ 1945  Ævar Arnfjörð Bjarmason
+ 1824  Nguyễn Thái Ngọc Duy
+ 1810  Patrick Steinhardt
+ 1401  Shawn O. Pearce
+ 1314  René Scharfe
+ 1203  Elijah Newren
+ 1118  Linus Torvalds
+  954  Michael Haggerty
+  902  brian m. carlson
+</pre>
+<p>
+Fascinating. Junio C Hamano is legendary!
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5230589" class="outline-2">
+<h2 id="org5230589">git baby steps</h2>
+<div class="outline-text-2" id="text-org5230589">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-08-24 Sun&gt;</span></span>
 </p>
@@ -252,60 +287,60 @@ These notes are meant to serve as a roadmap for people that come after me, and
 are looking to learn enough to be useful and contribute to git.
 </p>
 </div>
-<div id="outline-container-org7a70d2a" class="outline-3">
-<h3 id="org7a70d2a"><a href="https://github.com/ragtux/cnility">k&amp;r</a></h3>
-<div class="outline-text-3" id="text-org7a70d2a">
+<div id="outline-container-org3e8852c" class="outline-3">
+<h3 id="org3e8852c"><a href="https://github.com/ragtux/cnility">k&amp;r</a></h3>
+<div class="outline-text-3" id="text-org3e8852c">
 <p>
 Understanding c thoroughly is important. Treat this as a sacred text.
 </p>
 </div>
 </div>
-<div id="outline-container-org0380d6d" class="outline-3">
-<h3 id="org0380d6d"><a href="https://bitbucket.org/jacobstopak/baby-git">baby-git</a></h3>
-<div class="outline-text-3" id="text-org0380d6d">
+<div id="outline-container-orgfc236a6" class="outline-3">
+<h3 id="orgfc236a6"><a href="https://bitbucket.org/jacobstopak/baby-git">baby-git</a></h3>
+<div class="outline-text-3" id="text-orgfc236a6">
 <p>
 Understanding gits initial commit is something that you are able to do much
 easier than reading the current entire codebase.
 </p>
 </div>
 </div>
-<div id="outline-container-org9d7b6f1" class="outline-3">
-<h3 id="org9d7b6f1"><a href="https://git-scm.com/book/en/v2">pro git book</a></h3>
-<div class="outline-text-3" id="text-org9d7b6f1">
+<div id="outline-container-org5962fd0" class="outline-3">
+<h3 id="org5962fd0"><a href="https://git-scm.com/book/en/v2">pro git book</a></h3>
+<div class="outline-text-3" id="text-org5962fd0">
 <p>
 Read this so that you can start learning everything about git. Treat this as one
 of your sacred texts.
 </p>
 </div>
 </div>
-<div id="outline-container-org01e0bb9" class="outline-3">
-<h3 id="org01e0bb9"><a href="https://git.github.io/GSoC-Participants/">past git GSoC contributors</a></h3>
-<div class="outline-text-3" id="text-org01e0bb9">
+<div id="outline-container-org7f18bf0" class="outline-3">
+<h3 id="org7f18bf0"><a href="https://git.github.io/GSoC-Participants/">past git GSoC contributors</a></h3>
+<div class="outline-text-3" id="text-org7f18bf0">
 <p>
 This is a great resource, it might make sense to review previous work done in
 order to familiarize oneself with the process.
 </p>
 </div>
 </div>
-<div id="outline-container-orgc857191" class="outline-3">
-<h3 id="orgc857191"><a href="https://git.github.io/">git developer pages</a></h3>
-<div class="outline-text-3" id="text-orgc857191">
+<div id="outline-container-orga86abd9" class="outline-3">
+<h3 id="orga86abd9"><a href="https://git.github.io/">git developer pages</a></h3>
+<div class="outline-text-3" id="text-orga86abd9">
 <p>
 Use these pages to get a grip on contributing to git.
 </p>
 </div>
 </div>
-<div id="outline-container-org30de788" class="outline-3">
-<h3 id="org30de788"><a href="https://public-inbox.org/git/?q=%23leftoverbits">#leftoverbits</a></h3>
-<div class="outline-text-3" id="text-org30de788">
+<div id="outline-container-org80de077" class="outline-3">
+<h3 id="org80de077"><a href="https://public-inbox.org/git/?q=%23leftoverbits">#leftoverbits</a></h3>
+<div class="outline-text-3" id="text-org80de077">
 <p>
 Search for this in the mailing list to find potential things you can do.
 </p>
 </div>
 </div>
-<div id="outline-container-orgdea6bb3" class="outline-3">
-<h3 id="orgdea6bb3"><a href="https://lore.kernel.org/git/CAOLa=ZSHETyzEyyJvP-VT9CbvrJt_jV65nEyCOzR3YGRgFNkrQ@mail.gmail.com/T/#t">GSoC application announcement</a></h3>
-<div class="outline-text-3" id="text-orgdea6bb3">
+<div id="outline-container-orgd342be7" class="outline-3">
+<h3 id="orgd342be7"><a href="https://lore.kernel.org/git/CAOLa=ZSHETyzEyyJvP-VT9CbvrJt_jV65nEyCOzR3YGRgFNkrQ@mail.gmail.com/T/#t">GSoC application announcement</a></h3>
+<div class="outline-text-3" id="text-orgd342be7">
 <p>
 The GSoC applications for 2025 were due in February.
 </p>

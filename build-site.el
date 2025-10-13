@@ -19,6 +19,8 @@
 (setq org-publish-project-alist
       (list
        (list "my-org-site"
+             :author "Andrew Chitester"
+             :email "andrewchitester@gmail.com"
              :recursive t
              :base-directory "./content"
              :publishing-directory "./docs"
@@ -30,6 +32,7 @@
 
 ;; Customize the HTML output
 (setq org-html-validation-link nil
+      org-html-htmlize-output-type nil
       org-html-head-include-scripts nil
       org-html-head-include-default-style t)
 

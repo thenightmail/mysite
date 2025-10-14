@@ -1,5 +1,28 @@
 #+title: git
-* [[file:index.org][index]]
+#+options: h:1 num:nil toc:t
+
+* git baby steps
+<2025-08-24 Sun>
+
+These notes are meant to serve as a roadmap for people that come after me, and
+are looking to learn enough to be useful and contribute to git.
+** [[https://github.com/ragtux/cnility][k&r]]
+Understanding c thoroughly is important. Treat this as a sacred text.
+** [[https://bitbucket.org/jacobstopak/baby-git][baby-git]]
+Understanding gits initial commit is something that you are able to do much
+easier than reading the current entire codebase.
+** [[https://git-scm.com/book/en/v2][pro git book]]
+Read this so that you can start learning everything about git. Treat this as one
+of your sacred texts.
+** [[https://git.github.io/GSoC-Participants/][past git GSoC contributors]]
+This is a great resource, it might make sense to review previous work done in
+order to familiarize oneself with the process.
+** [[https://git.github.io/][git developer pages]]
+Use these pages to get a grip on contributing to git.
+** [[https://public-inbox.org/git/?q=%23leftoverbits][#leftoverbits]]
+Search for this in the mailing list to find potential things you can do.
+** [[https://lore.kernel.org/git/CAOLa=ZSHETyzEyyJvP-VT9CbvrJt_jV65nEyCOzR3YGRgFNkrQ@mail.gmail.com/T/#t][GSoC application announcement]]
+The GSoC applications for 2025 were due in February.
 * day 1
 :LOGBOOK:
 CLOCK: [2025-10-13 Mon 12:56]--[2025-10-13 Mon 13:47] =>  0:51
@@ -49,25 +72,184 @@ output of that command on the git repo;
    902  brian m. carlson
 #+end_example
 Fascinating. Junio C Hamano is legendary!
-* git baby steps
-<2025-08-24 Sun>
+* day 2
+<2025-10-14 Tue>
+:LOGBOOK:
+CLOCK: [2025-10-14 Tue 11:18]--[2025-10-14 Tue 11:57] =>  0:39
+:END:
 
-These notes are meant to serve as a roadmap for people that come after me, and
-are looking to learn enough to be useful and contribute to git.
-** [[https://github.com/ragtux/cnility][k&r]]
-Understanding c thoroughly is important. Treat this as a sacred text.
-** [[https://bitbucket.org/jacobstopak/baby-git][baby-git]]
-Understanding gits initial commit is something that you are able to do much
-easier than reading the current entire codebase.
-** [[https://git-scm.com/book/en/v2][pro git book]]
-Read this so that you can start learning everything about git. Treat this as one
-of your sacred texts.
-** [[https://git.github.io/GSoC-Participants/][past git GSoC contributors]]
-This is a great resource, it might make sense to review previous work done in
-order to familiarize oneself with the process.
-** [[https://git.github.io/][git developer pages]]
-Use these pages to get a grip on contributing to git.
-** [[https://public-inbox.org/git/?q=%23leftoverbits][#leftoverbits]]
-Search for this in the mailing list to find potential things you can do.
-** [[https://lore.kernel.org/git/CAOLa=ZSHETyzEyyJvP-VT9CbvrJt_jV65nEyCOzR3YGRgFNkrQ@mail.gmail.com/T/#t][GSoC application announcement]]
-The GSoC applications for 2025 were due in February.
+Today I am exploring the git source code and trying to figure out how things
+work.
+command works.
+** Finding list of commands
+Git has lots of commands. Here is how you can find where the commands are in the
+source. I used the command
+#+begin_src sh
+grep -nr "list of commands"
+#+end_src
+
+to find that there is a list of commands in the git.c file;
+
+#+begin_example
+Documentation/MyFirstContribution.adoc:220:The list of commands lives in `git.c`.
+#+end_example
+
+In that file is the list of commands. Here they are cleaned up so that each
+command is on a single line;
+
+#+begin_example
+"add"
+"am"
+"annotate"
+"apply"
+"archive"
+"backfill"
+"bisect"
+"blame"
+"branch"
+"bugreport"
+"bundle"
+"cat-file"
+"check-attr"
+"check-ignore"
+"check-mailmap"
+"check-ref-format"
+"checkout"
+"checkout--worker"
+"checkout-index"
+"cherry"
+"cherry-pick"
+"clean"
+"clone"
+"column"
+"commit"
+"commit-graph"
+"commit-tree"
+"config"
+"count-objects"
+"credential"
+"credential-cache"
+"credential-cache--daemon"
+"credential-store"
+"describe"
+"diagnose"
+"diff"
+"diff-files"
+"diff-index"
+"diff-pairs"
+"diff-tree"
+"difftool"
+"fast-export"
+"fast-import"
+"fetch"
+"fetch-pack"
+"fmt-merge-msg"
+"for-each-ref"
+"for-each-repo"
+"format-patch"
+"fsck"
+"fsck-objects"
+"fsmonitor--daemon"
+"gc"
+"get-tar-commit-id"
+"grep"
+"hash-object"
+"help"
+"hook"
+"index-pack"
+"init"
+"init-db"
+"interpret-trailers"
+"last-modified"
+"log"
+"ls-files"
+"ls-remote"
+"ls-tree"
+"mailinfo"
+"mailsplit"
+"maintenance"
+"merge"
+"merge-base"
+"merge-file"
+"merge-index"
+"merge-ours"
+"merge-recursive"
+"merge-recursive-ours"
+"merge-recursive-theirs"
+"merge-subtree"
+"merge-tree"
+"mktag"
+"mktree"
+"multi-pack-index"
+"mv"
+"name-rev"
+"notes"
+"pack-objects"
+"pack-redundant"
+"pack-refs"
+"patch-id"
+"pickaxe"
+"prune"
+"prune-packed"
+"pull"
+"push"
+"range-diff"
+"read-tree"
+"rebase"
+"receive-pack"
+"reflog"
+"refs"
+"remote"
+"remote-ext"
+"remote-fd"
+"repack"
+"replace"
+"replay"
+"repo"
+"rerere"
+"reset"
+"restore"
+"rev-list"
+"rev-parse"
+"revert"
+"rm"
+"send-pack"
+"shortlog"
+"show"
+"show-branch"
+"show-index"
+"show-ref"
+"sparse-checkout"
+"stage"
+"stash"
+"status"
+"stripspace"
+"submodule--helper"
+"switch"
+"symbolic-ref"
+"tag"
+"unpack-file"
+"unpack-objects"
+"update-index"
+"update-ref"
+"update-server-info"
+"upload-archive"
+"upload-archive--writer"
+"upload-pack"
+"var"
+"verify-commit"
+"verify-pack"
+"verify-tag"
+"version"
+"whatchanged"
+"worktree"
+"write-tree"
+#+end_example
+** Let's find out how git add works
+Let's focus on a command I've probably used hundreds of times already:
+
+#+begin_src sh
+git add
+#+end_src
+
+to be continued...

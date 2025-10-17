@@ -1,5 +1,5 @@
 #+title: git
-#+options: h:1 num:nil toc:t
+#+options: num:nil toc:t
 
 * git baby steps
 <2025-08-24 Sun>
@@ -252,4 +252,123 @@ Let's focus on a command I've probably used hundreds of times already:
 git add
 #+end_src
 
-to be continued...
+We can find the following in builtins/add.c;
+
+#+begin_src C
+static struct option builtin_add_options[] = {
+  OPT__DRY_RUN(&show_only, N_("dry run")),
+  OPT__VERBOSE(&verbose, N_("be verbose")),
+  OPT_GROUP(""),
+  OPT_BOOL('i', "interactive", &add_interactive, N_("interactive picking")),
+  OPT_BOOL('p', "patch", &patch_interactive, N_("select hunks interactively")),
+  OPT_DIFF_UNIFIED(&add_p_opt.context),
+  OPT_DIFF_INTERHUNK_CONTEXT(&add_p_opt.interhunkcontext),
+  OPT_BOOL('e', "edit", &edit_interactive, N_("edit current diff and apply")),
+  OPT__FORCE(&ignored_too, N_("allow adding otherwise ignored files"), 0),
+  OPT_BOOL('u', "update", &take_worktree_changes, N_("update tracked files")),
+  OPT_BOOL(0, "renormalize", &add_renormalize, N_("renormalize EOL of tracked files (implies -u)")),
+  OPT_BOOL('N', "intent-to-add", &intent_to_add, N_("record only the fact that the path will be added later")),
+  OPT_BOOL('A', "all", &addremove_explicit, N_("add changes from all tracked and untracked files")),
+  OPT_CALLBACK_F(0, "ignore-removal", &addremove_explicit,
+                 NULL /* takes no arguments */,
+                 N_("ignore paths removed in the working tree (same as --no-all)"),
+                 PARSE_OPT_NOARG, ignore_removal_cb),
+  OPT_BOOL( 0 , "refresh", &refresh_only, N_("don't add, only refresh the index")),
+  OPT_BOOL( 0 , "ignore-errors", &ignore_add_errors, N_("just skip files which cannot be added because of errors")),
+  OPT_BOOL( 0 , "ignore-missing", &ignore_missing, N_("check if - even missing - files are ignored in dry run")),
+  OPT_BOOL(0, "sparse", &include_sparse, N_("allow updating entries outside of the sparse-checkout cone")),
+  OPT_STRING(0, "chmod", &chmod_arg, "(+|-)x",
+             N_("override the executable bit of the listed files")),
+  OPT_HIDDEN_BOOL(0, "warn-embedded-repo", &warn_on_embedded_repo,
+                  N_("warn when adding an embedded repository")),
+  OPT_PATHSPEC_FROM_FILE(&pathspec_from_file),
+  OPT_PATHSPEC_FILE_NUL(&pathspec_file_nul),
+  OPT_END(),
+};
+#+end_src
+* day 3
+<2025-11-15 Sat>
+
+Looks like I didn't end up figuring out how git add works. Guess my knowledge of
+C is pretty limited, and there are lots of header files involved. Well guess
+I'll have to study more. Today I didn't end up doing any work towards my
+experiment.
+* day 4
+<2025-11-16 Sun>
+** [[https://git-scm.com/book/en/v2][pro git]]
+Still I have to read through;
+
+- Git Tools
+- Customizing Git
+- Git and Other Systems
+- Git Internals
+
+* day 5
+<2025-10-17 Fri>
+:LOGBOOK:
+CLOCK: [2025-10-17 Fri 07:21]--[2025-10-17 Fri 08:07] =>  0:46
+:END:
+I'm switching to a more bottom up approach. Looking into the git repo at it's
+initial commit. Luckily there are already resources available for doing this. I
+am not alone in my insanity of trying to understand this project. I found the
+baby-git repo which is the initial commit with extra comments for readability. I
+also have the Decoding Git book which I am going to work through in addition to
+the pro git book. Let's spend an hour reading through the Decoding Book and
+taking note of any important findings. Tomorrow I'll contiue off from the object
+database heading in chapter 2 of decoding git.
+
+The following references are mentioned to being useful.
+- https://www.gnu.org/software/libc/manual/html_node/index.html
+- https://pubs.opengroup.org/onlinepubs/9699919799/
+- https://www.cplusplus.com/reference/
+- https://zlib.net/manual.html
+- https://zlib.net/zlib_how.html
+
+Git uses thes SHA-1 hash function to map file contents to hash values.
+
+There are the following four basic components in Git's initial commit:
+- objects
+- an object database
+- a current directory cache
+- a working directory
+** Objects
+Object types:
+- blob
+- tree
+- commit
+
+An object is an abstraction of data and metadata. It is indexed and referenced
+through its hash value. The name of an object is its hash value. This hash value
+is used to refer and look up to the specific content.
+
+The general structure of an object is:
+#+begin_example
+object tag
+' '                 (single space)
+size of object data (in bytes)
+'\0'                (null character)
+object binary data
+#+end_example
+
+The first part of an object consists of the object metadata. The second part
+consists of the object data (the binary data). The space and null byte are used
+to seperate the two. The object tag is simply what type of object it is (one of:
+blob, tree, commit) and the size of the object data in bytes before deflation.
+
+*** Blobs (binary lapge objects)
+Woah that just blew my mind, didn's know blobs are just binary large objects.
+Any file that the user adds could be a blob, it sould be the binary
+representation of a video, plaintext, or any file. Git generates a blob object
+that is named, indexed and referenced through the deflated blob objects SHA-1
+hash value.
+
+*** Tree object
+A tree object contains a list of files aded to a repository. each file has a
+mode, path and sha-1 hash. The size of the tree is the sum of the sizes of the
+file information entries in the tree object data.
+
+*** Commit object
+A commit contains the hash value of a tree object being committed ahd the hash
+value of any parent tree objects specified by the user, metadata about the user
+who committed the tree, the time and date when the commit was made and a
+user-supplied comment known today as the commit message.

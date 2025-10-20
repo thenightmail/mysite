@@ -1,0 +1,102 @@
+#+title: Books
+#+options: num:nil toc:nil
+Here is a list of books I am working on self studying. Some might link to an
+entire repository, others have notes / summary for each chapter.
+* k&r
+
+* Computer Power and Human Reasoning
+** introduction
+Ok. My mind is kinda blown. Weizenbaum said a bunch of stuff and I'm still
+digesting it.
+- he made eliza
+- people have faith in science
+- and this is not much different to theater, pepole must assume that magic is
+  being done
+- people don't understand how computers work
+-
+** On Tools
+** Where the Power of the Computer Comes From
+** How Computers Work
+** Science and the Compulsive Programmer
+** Theories and Models
+** Computer Models in Psycology
+** The Computer and Natural Language
+** Artificial Intelligence
+** Incomprehensible Programs
+** Against the Imperialism of Instrumental Reason
+* Physics for Computer Science Students
+* Basic Training in Mathematics
+** Preface
+** Differential Calculus of One Variable
+*** Introduction
+*** Differential Calculus
+*** Exponential and Log Functions
+*** Trigonometric Functionsi
+*** Plotting Functions
+*** Differentials
+*** Summary
+** Integral Calculus
+*** Basics of Integration
+*** Some Tricks of the Trade
+*** Summary
+** Calculus of Many Variables
+*** Differential Calculus of Many Variables
+*** Integral Calculus of Many Variables
+*** Summary
+** Infinite Series
+*** Introduction
+*** Tests for Convergence
+*** Power Series in x
+*** Summary
+** Complex Numbers
+*** Introductions
+*** Complex Numbers in Cartesian Form
+*** Polar Form of Complex Numbers
+*** An Application
+*** Summary
+** Functions of a Complex Variable
+*** Analytic Functions
+*** Analytic Functions Defined by Power Series
+*** Calculus of Analytic Functions
+*** The Residue Theorem
+*** Taylor Series for Analytic Functions
+*** Summary
+** Vector Calculus
+*** Review of Vector Analysis
+*** Time Derivatives of Vectors
+*** Scalar and Vector Fields
+*** Line and Surface Integrals
+*** Scalar Field and the Gradient
+*** Curl of a Vector Field
+*** The Divergence of a Vector Field
+*** Differential Operators
+*** Summary of Integral Theorems
+*** Higher Derivatives
+*** Applications from Electrodynamics
+*** Summary
+** Matrices and Determinants
+*** Introduction
+*** Matrix Inverses
+*** Determinants
+*** Transformations on Matrices and Special Matrices
+*** Summary
+** Linear Vector Spaces
+*** Linear Vector Spaces: Basics
+*** Inner Product Spaces
+*** Linear Operators
+*** Some Advanced Topics
+*** The Eigenvalue Problem
+*** Applications of Eigenvalue Theory
+*** Function Spaces
+*** Some Terminology
+*** Tensors: An introduction
+*** Summary
+** Differential Equations
+*** Introduction
+*** ODEs with Constant Coefficients
+*** ODEs with Variable Coefficients: First Order
+*** ODEs with Variable Coefficients: Second Order and Homogenous
+*** Partial Differential Equations
+*** Green's Function Method
+*** Summary
+**

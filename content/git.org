@@ -372,3 +372,62 @@ A commit contains the hash value of a tree object being committed ahd the hash
 value of any parent tree objects specified by the user, metadata about the user
 who committed the tree, the time and date when the commit was made and a
 user-supplied comment known today as the commit message.
+* day 6
+<2025-10-18 Sat>
+
+Today I will continue my journey through the decoding git book.
+
+Last night I was playing around with gdb. I remembered the tool tig, and
+downloaded that. I use magit already, so I am curious if I will need to use tig,
+or if magit will be good enough.
+
+** Using magit-diff on whats-cooking.txt
+There is a typo in this document, guess the whats-cooking.txt file is kinda
+informal and not enough people read it to be nitpicky about typos(?).
+** lei
+Here is a link on how I can filter the mail from the kernel mailing lists. Just
+putting this here for posterity, probably in the future I will want to have very
+specific routing of emails. There is a nice tutorial on setting up automatic
+mail to a imap folder. I could probably set this up with my gmail.
+https://people.kernel.org/monsieuricon/lore-lei-part-1-getting-started
+** git clean -n -d
+I ended up building git a while ago and had a bunch of junk in my next branch. I
+searched online for a solution to removing all of that junk. To do this, use
+#+begin_src sh
+man git-clean
+#+end_src
+Basically it will show a preview of what happens when you remove all of the
+untracked files and directories in your repo. huh, the command is disabled by
+default in magit. That is probably for the best it seems like a pretty dangerous
+command.
+** Find initial commit in the git git repo
+use
+#+begin_src sh
+  git rev-list --max-parents=0 HEAD
+#+end_src
+to find all commits that have 0 parents. The last hash that is printed;
+#+begin_example
+e83c5163316f89bfbde7d9ab23ca2e25604af290
+#+end_example
+corresponds with the initial commit of the git repository. Before doing this,
+you are going to want to create a new branch so that you can start screwing
+around with the code. I created one called 'blind' which I think is
+representative to how I feel compared to much more experienced git users. Then
+you can checkout that commit and go to town. Alright that is great to look at I
+guess.
+* ugit
+https://www.leshenko.net/p/ugit/
+
+This is pretty interesting. It is a tutorial that guides you through
+implementing a toy git program. I think I will work through this to get a better
+understanding of how git works.
+** Why learn Git internals?
+In order to effectively rebase and merge and do more with the more advanced
+features, having a mental model of how git works under the hood will be
+beneficial.
+** Introducing: ugit
+** Why learn Git using code?
+** Why not learn Git by reading the real Git code?
+** About Me
+** cli: Add argument parser
+** init: Create new .ugit directory

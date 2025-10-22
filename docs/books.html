@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Books</title>
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Books</h1>
+<p>
+Here is a list of books I am working on self studying. Some might link to an
+entire repository, others have notes / summary for each chapter.
+</p>
+<div id="outline-container-orge714635" class="outline-2">
+<h2 id="orge714635">k&amp;r</h2>
+</div>
+
+<div id="outline-container-org3350ee1" class="outline-2">
+<h2 id="org3350ee1">Computer Power and Human Reasoning</h2>
+<div class="outline-text-2" id="text-org3350ee1">
+</div>
+<div id="outline-container-org90ea2bc" class="outline-3">
+<h3 id="org90ea2bc">introduction</h3>
+<div class="outline-text-3" id="text-org90ea2bc">
+<p>
+Ok. My mind is kinda blown. Weizenbaum said a bunch of stuff and I'm still
+digesting it.
+</p>
+<ul class="org-ul">
+<li>he made eliza</li>
+<li>people have faith in science</li>
+<li>and this is not much different to theater, pepole must assume that magic is
+being done</li>
+<li>people don't understand how computers work</li>
+<li></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9dfdce9" class="outline-3">
+<h3 id="org9dfdce9">On Tools</h3>
+</div>
+<div id="outline-container-org95c8465" class="outline-3">
+<h3 id="org95c8465">Where the Power of the Computer Comes From</h3>
+</div>
+<div id="outline-container-org72d12bc" class="outline-3">
+<h3 id="org72d12bc">How Computers Work</h3>
+</div>
+<div id="outline-container-orge9b58ad" class="outline-3">
+<h3 id="orge9b58ad">Science and the Compulsive Programmer</h3>
+</div>
+<div id="outline-container-orga03ebad" class="outline-3">
+<h3 id="orga03ebad">Theories and Models</h3>
+</div>
+<div id="outline-container-orgf8667cc" class="outline-3">
+<h3 id="orgf8667cc">Computer Models in Psycology</h3>
+</div>
+<div id="outline-container-org216a3ea" class="outline-3">
+<h3 id="org216a3ea">The Computer and Natural Language</h3>
+</div>
+<div id="outline-container-orgfc0367d" class="outline-3">
+<h3 id="orgfc0367d">Artificial Intelligence</h3>
+</div>
+<div id="outline-container-org463621d" class="outline-3">
+<h3 id="org463621d">Incomprehensible Programs</h3>
+</div>
+<div id="outline-container-org630859d" class="outline-3">
+<h3 id="org630859d">Against the Imperialism of Instrumental Reason</h3>
+</div>
+</div>
+<div id="outline-container-org817b528" class="outline-2">
+<h2 id="org817b528">Physics for Computer Science Students</h2>
+</div>
+<div id="outline-container-org5b83a49" class="outline-2">
+<h2 id="org5b83a49">Basic Training in Mathematics</h2>
+<div class="outline-text-2" id="text-org5b83a49">
+</div>
+<div id="outline-container-org0cd4451" class="outline-3">
+<h3 id="org0cd4451">Preface</h3>
+</div>
+<div id="outline-container-org1ef62a8" class="outline-3">
+<h3 id="org1ef62a8">Differential Calculus of One Variable</h3>
+<div class="outline-text-3" id="text-org1ef62a8">
+</div>
+<div id="outline-container-org634de41" class="outline-4">
+<h4 id="org634de41">Introduction</h4>
+</div>
+<div id="outline-container-org7cf1ff6" class="outline-4">
+<h4 id="org7cf1ff6">Differential Calculus</h4>
+</div>
+<div id="outline-container-org5f665f9" class="outline-4">
+<h4 id="org5f665f9">Exponential and Log Functions</h4>
+</div>
+<div id="outline-container-org98ee05f" class="outline-4">
+<h4 id="org98ee05f">Trigonometric Functionsi</h4>
+</div>
+<div id="outline-container-orgd632802" class="outline-4">
+<h4 id="orgd632802">Plotting Functions</h4>
+</div>
+<div id="outline-container-orgbd5bfbd" class="outline-4">
+<h4 id="orgbd5bfbd">Differentials</h4>
+</div>
+<div id="outline-container-org4e57f47" class="outline-4">
+<h4 id="org4e57f47">Summary</h4>
+</div>
+</div>
+<div id="outline-container-org7c2115c" class="outline-3">
+<h3 id="org7c2115c">Integral Calculus</h3>
+<div class="outline-text-3" id="text-org7c2115c">
+</div>
+<div id="outline-container-org7941a80" class="outline-4">
+<h4 id="org7941a80">Basics of Integration</h4>
+</div>
+<div id="outline-container-orgae32aa4" class="outline-4">
+<h4 id="orgae32aa4">Some Tricks of the Trade</h4>
+</div>
+<div id="outline-container-org20ffcaf" class="outline-4">
+<h4 id="org20ffcaf">Summary</h4>
+</div>
+</div>
+<div id="outline-container-org67adc41" class="outline-3">
+<h3 id="org67adc41">Calculus of Many Variables</h3>
+<div class="outline-text-3" id="text-org67adc41">
+</div>
+<div id="outline-container-orga9b9af2" class="outline-4">
+<h4 id="orga9b9af2">Differential Calculus of Many Variables</h4>
+</div>
+<div id="outline-container-orgbbe9b16" class="outline-4">
+<h4 id="orgbbe9b16">Integral Calculus of Many Variables</h4>
+</div>
+<div id="outline-container-org5c59fbf" class="outline-4">
+<h4 id="org5c59fbf">Summary</h4>
+</div>
+</div>
+<div id="outline-container-orgce1c3d2" class="outline-3">
+<h3 id="orgce1c3d2">Infinite Series</h3>
+<div class="outline-text-3" id="text-orgce1c3d2">
+</div>
+<div id="outline-container-orgb8062c1" class="outline-4">
+<h4 id="orgb8062c1">Introduction</h4>
+</div>
+<div id="outline-container-org27295d0" class="outline-4">
+<h4 id="org27295d0">Tests for Convergence</h4>
+</div>
+<div id="outline-container-org443bc37" class="outline-4">
+<h4 id="org443bc37">Power Series in x</h4>
+</div>
+<div id="outline-container-org938a63e" class="outline-4">
+<h4 id="org938a63e">Summary</h4>
+</div>
+</div>
+<div id="outline-container-org10eaabb" class="outline-3">
+<h3 id="org10eaabb">Complex Numbers</h3>
+<div class="outline-text-3" id="text-org10eaabb">
+</div>
+<div id="outline-container-orgf1e2781" class="outline-4">
+<h4 id="orgf1e2781">Introductions</h4>
+</div>
+<div id="outline-container-org3b2b40c" class="outline-4">
+<h4 id="org3b2b40c">Complex Numbers in Cartesian Form</h4>
+</div>
+<div id="outline-container-org27a4d8a" class="outline-4">
+<h4 id="org27a4d8a">Polar Form of Complex Numbers</h4>
+</div>
+<div id="outline-container-org4d65db8" class="outline-4">
+<h4 id="org4d65db8">An Application</h4>
+</div>
+<div id="outline-container-orgafab110" class="outline-4">
+<h4 id="orgafab110">Summary</h4>
+</div>
+</div>
+<div id="outline-container-org9475225" class="outline-3">
+<h3 id="org9475225">Functions of a Complex Variable</h3>
+<div class="outline-text-3" id="text-org9475225">
+</div>
+<div id="outline-container-org6a9817e" class="outline-4">
+<h4 id="org6a9817e">Analytic Functions</h4>
+</div>
+<div id="outline-container-orge63ab4b" class="outline-4">
+<h4 id="orge63ab4b">Analytic Functions Defined by Power Series</h4>
+</div>
+<div id="outline-container-org43f00f4" class="outline-4">
+<h4 id="org43f00f4">Calculus of Analytic Functions</h4>
+</div>
+<div id="outline-container-org2d99f1d" class="outline-4">
+<h4 id="org2d99f1d">The Residue Theorem</h4>
+</div>
+<div id="outline-container-org2f3f152" class="outline-4">
+<h4 id="org2f3f152">Taylor Series for Analytic Functions</h4>
+</div>
+<div id="outline-container-orgfa5a679" class="outline-4">
+<h4 id="orgfa5a679">Summary</h4>
+</div>
+</div>
+<div id="outline-container-org876fa32" class="outline-3">
+<h3 id="org876fa32">Vector Calculus</h3>
+<div class="outline-text-3" id="text-org876fa32">
+</div>
+<div id="outline-container-orga552e1d" class="outline-4">
+<h4 id="orga552e1d">Review of Vector Analysis</h4>
+</div>
+<div id="outline-container-org19d5e15" class="outline-4">
+<h4 id="org19d5e15">Time Derivatives of Vectors</h4>
+</div>
+<div id="outline-container-org0cba1e2" class="outline-4">
+<h4 id="org0cba1e2">Scalar and Vector Fields</h4>
+</div>
+<div id="outline-container-orgfabd635" class="outline-4">
+<h4 id="orgfabd635">Line and Surface Integrals</h4>
+</div>
+<div id="outline-container-orge73c568" class="outline-4">
+<h4 id="orge73c568">Scalar Field and the Gradient</h4>
+</div>
+<div id="outline-container-org1dae348" class="outline-4">
+<h4 id="org1dae348">Curl of a Vector Field</h4>
+</div>
+<div id="outline-container-orgb131fec" class="outline-4">
+<h4 id="orgb131fec">The Divergence of a Vector Field</h4>
+</div>
+<div id="outline-container-org3af6531" class="outline-4">
+<h4 id="org3af6531">Differential Operators</h4>
+</div>
+<div id="outline-container-org8015cf4" class="outline-4">
+<h4 id="org8015cf4">Summary of Integral Theorems</h4>
+</div>
+<div id="outline-container-orge6e8e14" class="outline-4">
+<h4 id="orge6e8e14">Higher Derivatives</h4>
+</div>
+<div id="outline-container-org55c9a52" class="outline-4">
+<h4 id="org55c9a52">Applications from Electrodynamics</h4>
+</div>
+<div id="outline-container-org28f170d" class="outline-4">
+<h4 id="org28f170d">Summary</h4>
+</div>
+</div>
+<div id="outline-container-org1476eb6" class="outline-3">
+<h3 id="org1476eb6">Matrices and Determinants</h3>
+<div class="outline-text-3" id="text-org1476eb6">
+</div>
+<div id="outline-container-org732310c" class="outline-4">
+<h4 id="org732310c">Introduction</h4>
+</div>
+<div id="outline-container-org149a3bb" class="outline-4">
+<h4 id="org149a3bb">Matrix Inverses</h4>
+</div>
+<div id="outline-container-orgcceaaf6" class="outline-4">
+<h4 id="orgcceaaf6">Determinants</h4>
+</div>
+<div id="outline-container-org6af9ec5" class="outline-4">
+<h4 id="org6af9ec5">Transformations on Matrices and Special Matrices</h4>
+</div>
+<div id="outline-container-org2c0bc36" class="outline-4">
+<h4 id="org2c0bc36">Summary</h4>
+</div>
+</div>
+<div id="outline-container-orgb20798c" class="outline-3">
+<h3 id="orgb20798c">Linear Vector Spaces</h3>
+<div class="outline-text-3" id="text-orgb20798c">
+</div>
+<div id="outline-container-org0d6470c" class="outline-4">
+<h4 id="org0d6470c">Linear Vector Spaces: Basics</h4>
+</div>
+<div id="outline-container-org5edfd11" class="outline-4">
+<h4 id="org5edfd11">Inner Product Spaces</h4>
+</div>
+<div id="outline-container-org0baa12f" class="outline-4">
+<h4 id="org0baa12f">Linear Operators</h4>
+</div>
+<div id="outline-container-org9a869b4" class="outline-4">
+<h4 id="org9a869b4">Some Advanced Topics</h4>
+</div>
+<div id="outline-container-org380684e" class="outline-4">
+<h4 id="org380684e">The Eigenvalue Problem</h4>
+</div>
+<div id="outline-container-org57bea30" class="outline-4">
+<h4 id="org57bea30">Applications of Eigenvalue Theory</h4>
+</div>
+<div id="outline-container-org19fa4b9" class="outline-4">
+<h4 id="org19fa4b9">Function Spaces</h4>
+</div>
+<div id="outline-container-org5663469" class="outline-4">
+<h4 id="org5663469">Some Terminology</h4>
+</div>
+<div id="outline-container-org65a018a" class="outline-4">
+<h4 id="org65a018a">Tensors: An introduction</h4>
+</div>
+<div id="outline-container-org72317fe" class="outline-4">
+<h4 id="org72317fe">Summary</h4>
+</div>
+</div>
+<div id="outline-container-org9ee991d" class="outline-3">
+<h3 id="org9ee991d">Differential Equations</h3>
+<div class="outline-text-3" id="text-org9ee991d">
+</div>
+<div id="outline-container-org151ecb0" class="outline-4">
+<h4 id="org151ecb0">Introduction</h4>
+</div>
+<div id="outline-container-orgfcd602b" class="outline-4">
+<h4 id="orgfcd602b">ODEs with Constant Coefficients</h4>
+</div>
+<div id="outline-container-org650d16a" class="outline-4">
+<h4 id="org650d16a">ODEs with Variable Coefficients: First Order</h4>
+</div>
+<div id="outline-container-org4feed0d" class="outline-4">
+<h4 id="org4feed0d">ODEs with Variable Coefficients: Second Order and Homogenous</h4>
+</div>
+<div id="outline-container-org626424e" class="outline-4">
+<h4 id="org626424e">Partial Differential Equations</h4>
+</div>
+<div id="outline-container-org378716d" class="outline-4">
+<h4 id="org378716d">Green's Function Method</h4>
+</div>
+<div id="outline-container-org497003f" class="outline-4">
+<h4 id="org497003f">Summary</h4>
+<div class="outline-text-4" id="text-org497003f">
+<p>
+**
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

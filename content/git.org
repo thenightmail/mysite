@@ -1,6 +1,6 @@
 #+title: git
+#+index: git
 #+options: num:nil toc:t
-
 * git baby steps
 <2025-08-24 Sun>
 
@@ -415,7 +415,9 @@ around with the code. I created one called 'blind' which I think is
 representative to how I feel compared to much more experienced git users. Then
 you can checkout that commit and go to town. Alright that is great to look at I
 guess.
-* ugit
+* day 7
+<2025-10-22>
+
 https://www.leshenko.net/p/ugit/
 
 This is pretty interesting. It is a tutorial that guides you through
@@ -431,3 +433,18 @@ beneficial.
 ** About Me
 ** cli: Add argument parser
 ** init: Create new .ugit directory
+* day 8
+<2025-12-05 Fri>
+
+Today I joined the git discord and expressed interest in contributing to the
+sha256 interoperability. I found out that it is being developed in rust. I saw
+that the sha256 interoperability is in the latest what's cooking email.
+
+I didn't make significant progress in any of my previous endeavors ...
+
+In general I am trying to get a grip on the resources available to me. I found
+the youtube video [[https://www.youtube.com/watch?v=MYn0DHnQggo&t=679][The Zen of Git]] which I am very happy to have watched. I also
+found [[https://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html][this]] web page that cements the concepts that git is built around. Both
+resources deserve annotations. I am quite fascinated with this conceptual
+understanding and think that it would be interesting to generate git quizzes
+that ask you to construct the graph given certain git commands.

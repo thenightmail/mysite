@@ -1,7 +1,42 @@
 #+title: Books
+#+index: Books
 #+options: num:nil toc:nil
 Here is a list of books I am working on self studying. Some might link to an
 entire repository, others have notes / summary for each chapter.
 * k&r
+- [[https://github.com/ragtux/cnility][latex book]]
+* k&r solutions
+* The Rust Book
 * Computer Power and Human Reasoning
 * Physics for Computer Science Students
+* Concrete Mathematics
+* The Socratic Method - A Practitioner's Handbook
+** Preface
+"Socrates didn't question people in order to teach us how to question people. He
+did it to teach us how to think."
+** The Socratic Problem
+** Method vs. Doctrine
+** Elements of the Method
+** The Socratic Function
+** Question and Answer
+** The Elenchus
+** Consistency
+** Systole and Diastole
+** Analogies
+** Socratic Rules for Dialogue
+** Ignorance
+** Aporia
+** Socratic Goods
+** Socratic Ethics
+** Socrates and the Stoics
+** Socrates and the Skeptics
+** Finding Principles
+** Testing Principles
+* Structure and Interpretation of Computer Programs
+- [[https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html][index]]
+* Structure and Interpretation of Classical Mechanics
+- https://groups.csail.mit.edu/mac/users/gjs/6946/sicm-html/
+- https://github.com/tgvaughan/sicm
+* Functional Differential Geometry
+- [[https://duckduckgo.com/l/?uddg=https%3A%2F%2Fmitp-content-server.mit.edu%2Fbooks%2Fcontent%2Fsectbyfn%2Fbooks_pres_0%2F9580%2F9580.pdf%3Fdl%3D1&rut=5f69f101ae3a0ea1c91c9cb924e35813406c729fd48b5cfa3717e9c8f03d60b0][download]]
+* The Little Books by Dan Friedman

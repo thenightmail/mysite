@@ -448,3 +448,10 @@ found [[https://think-like-a-git.net/sections/experimenting-with-git/references-
 resources deserve annotations. I am quite fascinated with this conceptual
 understanding and think that it would be interesting to generate git quizzes
 that ask you to construct the graph given certain git commands.
+* day 9
+<2025-12-07 Sun>
+
+Today I learned how to install git on Windows and helped install git on a
+colleagues machine. They use Codium, which seems to be pretty similar to VSCode.
+It was satisfying installing git and then seeing their editor now capable of
+committing their changes.

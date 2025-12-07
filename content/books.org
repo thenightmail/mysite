@@ -14,24 +14,7 @@ entire repository, others have notes / summary for each chapter.
 ** Preface
 "Socrates didn't question people in order to teach us how to question people. He
 did it to teach us how to think."
-** The Socratic Problem
-** Method vs. Doctrine
-** Elements of the Method
-** The Socratic Function
-** Question and Answer
-** The Elenchus
-** Consistency
-** Systole and Diastole
-** Analogies
-** Socratic Rules for Dialogue
-** Ignorance
-** Aporia
-** Socratic Goods
-** Socratic Ethics
-** Socrates and the Stoics
-** Socrates and the Skeptics
-** Finding Principles
-** Testing Principles
+** rest
 * Structure and Interpretation of Computer Programs
 - [[https://mitp-content-server.mit.edu/books/content/sectbyfn/books_pres_0/6515/sicp.zip/index.html][index]]
 * Structure and Interpretation of Classical Mechanics

@@ -455,3 +455,9 @@ Today I learned how to install git on Windows and helped install git on a
 colleagues machine. They use Codium, which seems to be pretty similar to VSCode.
 It was satisfying installing git and then seeing their editor now capable of
 committing their changes.
+* day 10
+<2025-12-21 Sun>
+
+I'm moving all of my private repositories off of github and using git over ssh
+to work on them from my laptop. In the process I learned about rebase and have
+been fascinated that I hadn't used this earlier.

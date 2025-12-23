@@ -461,3 +461,39 @@ committing their changes.
 I'm moving all of my private repositories off of github and using git over ssh
 to work on them from my laptop. In the process I learned about rebase and have
 been fascinated that I hadn't used this earlier.
+* day 11
+<2025-12-22 Mon>
+
+I am setting up an agenda to outline my studies leading up to March 31st when
+the GSoC applications are due. The following are items I can annotate for future
+days. I also cloned the git.github.io repo so I can see all of the developer
+pages from Emacs. This is important because when they release those
+microprojects, I want to be ready to work on them, so I will be fetching the
+changes to this repo on Emacs startup. I found the fun Gitstery repository which
+is a murder mystery that you can solve by using git commands.
+* future days
+** TODO Introduce yourself on the mailing list
+** TODO Read and annotate the GSoC contributor guide
+https://google.github.io/gsocguides/student/index
+** TODO Read and annotate the hacking git resources
+https://git.github.io/Hacking-Git/
+*** Building Git
+*** Understanding the Git code base
+*** Getting Started hacking and contributing
+- [ ] My First Contribution
+- [ ] My First Object Walk
+- [ ] Matheus' tutorial
+- ...
+*** Conventions and processes
+*** Process related tools and sites
+*** Development status, news and events
+*** Branching Workflow
+*** Debugging
+*** Tests
+*** Community, getting help, mentoring
+*** Mentoring programs
+* TODO Complete Microproject
+DEADLINE: <2026-03-31 Tue>
+
+* TODO Complete GSoC application
+DEADLINE: <2026-03-31 Tue>

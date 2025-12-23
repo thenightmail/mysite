@@ -1,6 +1,6 @@
 #+title: git
 #+index: git
-#+options: num:nil toc:t
+#+options: num:nil toc:nil
 * git baby steps
 <2025-08-24 Sun>
 

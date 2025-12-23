@@ -18,9 +18,9 @@
 ;; Define the publishing project
 (setq org-publish-project-alist
       (list
-       (list "andrew's org files"
-             :author "Andrew Chitester"
-             :email "andrewchitester@gmail.com"
+       (list "org files"
+             :author "and car chi"
+             :email "andchi@fastmail.com"
              :recursive t
              :base-directory "./content"
              :publishing-directory "./docs"

@@ -1,62 +1,37 @@
 #+title: git
 #+index: git
-#+options: num:nil toc:nil
+#+options: num:nil toc:1
 * git baby steps
 <2025-08-24 Sun>
 
-These notes are meant to serve as a roadmap for people that come after me, and
-are looking to learn enough to be useful and contribute to git.
-** [[https://github.com/ragtux/cnility][k&r]]
-Understanding c thoroughly is important. Treat this as a sacred text.
-** [[https://bitbucket.org/jacobstopak/baby-git][baby-git]]
-Understanding gits initial commit is something that you are able to do much
-easier than reading the current entire codebase.
-** [[https://git-scm.com/book/en/v2][pro git book]]
-Read this so that you can start learning everything about git. Treat this as one
-of your sacred texts.
-** [[https://git.github.io/GSoC-Participants/][past git GSoC contributors]]
-This is a great resource, it might make sense to review previous work done in
-order to familiarize oneself with the process.
-** [[https://git.github.io/][git developer pages]]
-Use these pages to get a grip on contributing to git.
-** [[https://public-inbox.org/git/?q=%23leftoverbits][#leftoverbits]]
-Search for this in the mailing list to find potential things you can do.
-** [[https://lore.kernel.org/git/CAOLa=ZSHETyzEyyJvP-VT9CbvrJt_jV65nEyCOzR3YGRgFNkrQ@mail.gmail.com/T/#t][GSoC application announcement]]
-The GSoC applications for 2025 were due in February.
+My goal is to improve enough such that I am able to communicate and
+contribute to whatever project.
+
+These notes are meant to serve as a roadmap for people that come after
+me, and are looking to learn enough to be useful and contribute to git.
 * day 1
 :LOGBOOK:
 CLOCK: [2025-10-13 Mon 12:56]--[2025-10-13 Mon 13:47] =>  0:51
 :END:
 <2025-10-13 Mon>
 
-Today marks my first day in an experiment i'm conducting on myself. The goal is
-to spend at least one hour every day involved in learning about git. Before
-starting this, I have done some collecting of sources, and some reading of how
-to use git. My abilities with git are good enough for keeping configuration
-repositories between my desktop and my laptop, but I still am barely grasping
-how git works internally.
+Here are some resources I'm looking into:
+- [[https://github.com/ragtux/cnility][k&r]]
 
-** [[https://git-scm.com/book/en/v2][pro git]]
-Still I have to read through;
+- [[https://bitbucket.org/jacobstopak/baby-git][baby-git]]
 
-- Distributed Git
-- GitHub
-- Git Tools
-- Customizing Git
-- Git and Other Systems
-- Git Internals
+- [[https://git-scm.com/book/en/v2][pro git]]
 
-** [[https://gitexercises.fracz.com/][git exercises]]
-I started this a while ago but still need to finish them. I think I could go
-through them all again.
+- [[https://gitexercises.fracz.com/][git exercises]]
+
 ** TIL about git shortlog
-This feature is awesome, you can use it to easily see how many commits people
-are making to a repository. With the command
+This feature is awesome, you can use it to easily see how many commits
+people are making to a repository. With the command
 #+begin_src sh
 git shortlog -ns
 #+end_src
-you are able to see who has committed the most to a repository. Here is the
-output of that command on the git repo;
+you are able to see who has committed the most to a repository. Here is
+the output of that command on the git repo;
 #+begin_example
  27457  Junio C Hamano
   4611  Jeff King
@@ -78,12 +53,11 @@ Fascinating. Junio C Hamano is legendary!
 CLOCK: [2025-10-14 Tue 11:18]--[2025-10-14 Tue 11:57] =>  0:39
 :END:
 
-Today I am exploring the git source code and trying to figure out how things
-work.
-command works.
+Today I am exploring the git source code and trying to figure out how
+things work.
 ** Finding list of commands
-Git has lots of commands. Here is how you can find where the commands are in the
-source. I used the command
+Git has lots of commands. Here is how you can find where the commands
+are in the source. I used the command
 #+begin_src sh
 grep -nr "list of commands"
 #+end_src
@@ -94,8 +68,7 @@ to find that there is a list of commands in the git.c file;
 Documentation/MyFirstContribution.adoc:220:The list of commands lives in `git.c`.
 #+end_example
 
-In that file is the list of commands. Here they are cleaned up so that each
-command is on a single line;
+In that file is the list of commands. Here are the first and last five;
 
 #+begin_example
 "add"
@@ -103,149 +76,14 @@ command is on a single line;
 "annotate"
 "apply"
 "archive"
-"backfill"
-"bisect"
-"blame"
-"branch"
-"bugreport"
-"bundle"
-"cat-file"
-"check-attr"
-"check-ignore"
-"check-mailmap"
-"check-ref-format"
-"checkout"
-"checkout--worker"
-"checkout-index"
-"cherry"
-"cherry-pick"
-"clean"
-"clone"
-"column"
-"commit"
-"commit-graph"
-"commit-tree"
-"config"
-"count-objects"
-"credential"
-"credential-cache"
-"credential-cache--daemon"
-"credential-store"
-"describe"
-"diagnose"
-"diff"
-"diff-files"
-"diff-index"
-"diff-pairs"
-"diff-tree"
-"difftool"
-"fast-export"
-"fast-import"
-"fetch"
-"fetch-pack"
-"fmt-merge-msg"
-"for-each-ref"
-"for-each-repo"
-"format-patch"
-"fsck"
-"fsck-objects"
-"fsmonitor--daemon"
-"gc"
-"get-tar-commit-id"
-"grep"
-"hash-object"
-"help"
-"hook"
-"index-pack"
-"init"
-"init-db"
-"interpret-trailers"
-"last-modified"
-"log"
-"ls-files"
-"ls-remote"
-"ls-tree"
-"mailinfo"
-"mailsplit"
-"maintenance"
-"merge"
-"merge-base"
-"merge-file"
-"merge-index"
-"merge-ours"
-"merge-recursive"
-"merge-recursive-ours"
-"merge-recursive-theirs"
-"merge-subtree"
-"merge-tree"
-"mktag"
-"mktree"
-"multi-pack-index"
-"mv"
-"name-rev"
-"notes"
-"pack-objects"
-"pack-redundant"
-"pack-refs"
-"patch-id"
-"pickaxe"
-"prune"
-"prune-packed"
-"pull"
-"push"
-"range-diff"
-"read-tree"
-"rebase"
-"receive-pack"
-"reflog"
-"refs"
-"remote"
-"remote-ext"
-"remote-fd"
-"repack"
-"replace"
-"replay"
-"repo"
-"rerere"
-"reset"
-"restore"
-"rev-list"
-"rev-parse"
-"revert"
-"rm"
-"send-pack"
-"shortlog"
-"show"
-"show-branch"
-"show-index"
-"show-ref"
-"sparse-checkout"
-"stage"
-"stash"
-"status"
-"stripspace"
-"submodule--helper"
-"switch"
-"symbolic-ref"
-"tag"
-"unpack-file"
-"unpack-objects"
-"update-index"
-"update-ref"
-"update-server-info"
-"upload-archive"
-"upload-archive--writer"
-"upload-pack"
-"var"
-"verify-commit"
-"verify-pack"
+...
 "verify-tag"
 "version"
 "whatchanged"
 "worktree"
 "write-tree"
 #+end_example
-** Let's find out how git add works
+** How does git add work?
 Let's focus on a command I've probably used hundreds of times already:
 
 #+begin_src sh
@@ -286,45 +124,21 @@ static struct option builtin_add_options[] = {
   OPT_END(),
 };
 #+end_src
+
+Okay ... That is how it works.
 * day 3
-<2025-11-15 Sat>
-
-Looks like I didn't end up figuring out how git add works. Guess my knowledge of
-C is pretty limited, and there are lots of header files involved. Well guess
-I'll have to study more. Today I didn't end up doing any work towards my
-experiment.
-* day 4
-<2025-11-16 Sun>
-** [[https://git-scm.com/book/en/v2][pro git]]
-Still I have to read through;
-
-- Git Tools
-- Customizing Git
-- Git and Other Systems
-- Git Internals
-
-* day 5
 <2025-10-17 Fri>
 :LOGBOOK:
 CLOCK: [2025-10-17 Fri 07:21]--[2025-10-17 Fri 08:07] =>  0:46
 :END:
-I'm switching to a more bottom up approach. Looking into the git repo at it's
-initial commit. Luckily there are already resources available for doing this. I
-am not alone in my insanity of trying to understand this project. I found the
-baby-git repo which is the initial commit with extra comments for readability. I
-also have the Decoding Git book which I am going to work through in addition to
-the pro git book. Let's spend an hour reading through the Decoding Book and
-taking note of any important findings. Tomorrow I'll contiue off from the object
-database heading in chapter 2 of decoding git.
-
-The following references are mentioned to being useful.
+Using the baby-git and Decoding git book, I've found the following resources;
 - https://www.gnu.org/software/libc/manual/html_node/index.html
 - https://pubs.opengroup.org/onlinepubs/9699919799/
 - https://www.cplusplus.com/reference/
 - https://zlib.net/manual.html
 - https://zlib.net/zlib_how.html
 
-Git uses thes SHA-1 hash function to map file contents to hash values.
+Git uses the SHA-1 hash function to map file contents to hash values.
 
 There are the following four basic components in Git's initial commit:
 - objects
@@ -337,9 +151,10 @@ Object types:
 - tree
 - commit
 
-An object is an abstraction of data and metadata. It is indexed and referenced
-through its hash value. The name of an object is its hash value. This hash value
-is used to refer and look up to the specific content.
+An object is an abstraction of data and metadata. It is indexed and
+referenced through its hash value. The name of an object is its hash
+value. This hash value is used to refer and look up to the specific
+content.
 
 The general structure of an object is:
 #+begin_example
@@ -350,150 +165,62 @@ size of object data (in bytes)
 object binary data
 #+end_example
 
-The first part of an object consists of the object metadata. The second part
-consists of the object data (the binary data). The space and null byte are used
-to seperate the two. The object tag is simply what type of object it is (one of:
-blob, tree, commit) and the size of the object data in bytes before deflation.
+The first part of an object consists of the object metadata. The second
+part consists of the object data (the binary data). The space and null
+byte are used to seperate the two. The object tag is simply what type of
+object it is (one of: blob, tree, commit) and the size of the object
+data in bytes before deflation.
 
-*** Blobs (binary lapge objects)
-Woah that just blew my mind, didn's know blobs are just binary large objects.
-Any file that the user adds could be a blob, it sould be the binary
-representation of a video, plaintext, or any file. Git generates a blob object
-that is named, indexed and referenced through the deflated blob objects SHA-1
-hash value.
+*** Blobs (binary large objects)
+Woah that just blew my mind, didn't know blobs are just binary large
+objects. Any file that the user adds could be a blob, it sould be the
+binary representation of a video, plaintext, or any file. Git generates
+a blob object that is named, indexed and referenced through the deflated
+blob objects SHA-1 hash value.
 
 *** Tree object
-A tree object contains a list of files aded to a repository. each file has a
-mode, path and sha-1 hash. The size of the tree is the sum of the sizes of the
-file information entries in the tree object data.
+A tree object contains a list of files aded to a repository. each file
+has a mode, path and sha-1 hash. The size of the tree is the sum of the
+sizes of the file information entries in the tree object data.
 
 *** Commit object
-A commit contains the hash value of a tree object being committed ahd the hash
-value of any parent tree objects specified by the user, metadata about the user
-who committed the tree, the time and date when the commit was made and a
-user-supplied comment known today as the commit message.
-* day 6
-<2025-10-18 Sat>
-
-Today I will continue my journey through the decoding git book.
-
-Last night I was playing around with gdb. I remembered the tool tig, and
-downloaded that. I use magit already, so I am curious if I will need to use tig,
-or if magit will be good enough.
-
-** Using magit-diff on whats-cooking.txt
-There is a typo in this document, guess the whats-cooking.txt file is kinda
-informal and not enough people read it to be nitpicky about typos(?).
-** lei
-Here is a link on how I can filter the mail from the kernel mailing lists. Just
-putting this here for posterity, probably in the future I will want to have very
-specific routing of emails. There is a nice tutorial on setting up automatic
-mail to a imap folder. I could probably set this up with my gmail.
-https://people.kernel.org/monsieuricon/lore-lei-part-1-getting-started
-** git clean -n -d
-I ended up building git a while ago and had a bunch of junk in my next branch. I
-searched online for a solution to removing all of that junk. To do this, use
-#+begin_src sh
-man git-clean
-#+end_src
-Basically it will show a preview of what happens when you remove all of the
-untracked files and directories in your repo. huh, the command is disabled by
-default in magit. That is probably for the best it seems like a pretty dangerous
-command.
-** Find initial commit in the git git repo
-use
-#+begin_src sh
-  git rev-list --max-parents=0 HEAD
-#+end_src
-to find all commits that have 0 parents. The last hash that is printed;
-#+begin_example
-e83c5163316f89bfbde7d9ab23ca2e25604af290
-#+end_example
-corresponds with the initial commit of the git repository. Before doing this,
-you are going to want to create a new branch so that you can start screwing
-around with the code. I created one called 'blind' which I think is
-representative to how I feel compared to much more experienced git users. Then
-you can checkout that commit and go to town. Alright that is great to look at I
-guess.
-* day 7
-<2025-10-22>
-
-https://www.leshenko.net/p/ugit/
-
-This is pretty interesting. It is a tutorial that guides you through
-implementing a toy git program. I think I will work through this to get a better
-understanding of how git works.
-** Why learn Git internals?
-In order to effectively rebase and merge and do more with the more advanced
-features, having a mental model of how git works under the hood will be
-beneficial.
-** Introducing: ugit
-** Why learn Git using code?
-** Why not learn Git by reading the real Git code?
-** About Me
-** cli: Add argument parser
-** init: Create new .ugit directory
-* day 8
+A commit contains the hash value of a tree object being committed ahd
+the hash value of any parent tree objects specified by the user,
+metadata about the user who committed the tree, the time and date when
+the commit was made and a user-supplied comment known today as the
+commit message.
+* day 4
 <2025-12-05 Fri>
 
-Today I joined the git discord and expressed interest in contributing to the
-sha256 interoperability. I found out that it is being developed in rust. I saw
-that the sha256 interoperability is in the latest what's cooking email.
-
-I didn't make significant progress in any of my previous endeavors ...
-
-In general I am trying to get a grip on the resources available to me. I found
-the youtube video [[https://www.youtube.com/watch?v=MYn0DHnQggo&t=679][The Zen of Git]] which I am very happy to have watched. I also
-found [[https://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html][this]] web page that cements the concepts that git is built around. Both
-resources deserve annotations. I am quite fascinated with this conceptual
-understanding and think that it would be interesting to generate git quizzes
-that ask you to construct the graph given certain git commands.
-* day 9
+Found more resources:
+- [[https://www.youtube.com/watch?v=MYn0DHnQggo&t=679][The Zen of Git]] youtube video
+- [[https://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html][think like a git]] resource
+* day 5
 <2025-12-07 Sun>
 
-Today I learned how to install git on Windows and helped install git on a
-colleagues machine. They use Codium, which seems to be pretty similar to VSCode.
-It was satisfying installing git and then seeing their editor now capable of
-committing their changes.
-* day 10
+Today I learned how to install git on Windows and helped install git on
+a colleagues machine. They use Codium, which seems to be pretty similar
+to VSCode. It was satisfying installing git and then seeing their editor
+now capable of committing their changes.
+* day 6
 <2025-12-21 Sun>
 
-I'm moving all of my private repositories off of github and using git over ssh
-to work on them from my laptop. In the process I learned about rebase and have
-been fascinated that I hadn't used this earlier.
-* day 11
+I'm moving all of my private repositories off of github and using git
+over ssh to work on them from my laptop.
+
+I learned about rebase and feel enlightened. The words my high school
+math teacher told me when he found out that I wanted to study computer
+science echo in my head
+
+#+begin_quote
+With great power comes great responsibility
+#+end_quote
+* day 7
 <2025-12-22 Mon>
 
 I am setting up an agenda to outline my studies leading up to March 31st when
-the GSoC applications are due. The following are items I can annotate for future
-days. I also cloned the git.github.io repo so I can see all of the developer
-pages from Emacs. This is important because when they release those
-microprojects, I want to be ready to work on them, so I will be fetching the
-changes to this repo on Emacs startup. I found the fun Gitstery repository which
-is a murder mystery that you can solve by using git commands.
-* future days
-** TODO Introduce yourself on the mailing list
-** TODO Read and annotate the GSoC contributor guide
-https://google.github.io/gsocguides/student/index
-** TODO Read and annotate the hacking git resources
-https://git.github.io/Hacking-Git/
-*** Building Git
-*** Understanding the Git code base
-*** Getting Started hacking and contributing
-- [ ] My First Contribution
-- [ ] My First Object Walk
-- [ ] Matheus' tutorial
-- ...
-*** Conventions and processes
-*** Process related tools and sites
-*** Development status, news and events
-*** Branching Workflow
-*** Debugging
-*** Tests
-*** Community, getting help, mentoring
-*** Mentoring programs
-* TODO Complete Microproject
-DEADLINE: <2026-03-31 Tue>
-
-* TODO Complete GSoC application
-DEADLINE: <2026-03-31 Tue>
+the GSoC applications are due. I also cloned the git.github.io repo so I can see
+all of the developer pages from Emacs. This is important because when they
+release those microprojects, I want to be ready to work on them, so I will be
+fetching the changes to this repo on Emacs startup. I found the fun Gitstery
+repository which is a murder mystery that you can solve by using git commands.

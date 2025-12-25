@@ -23,7 +23,7 @@
              :email "andchi@fastmail.com"
              :recursive t
              :base-directory "./content"
-             :publishing-directory "./docs"
+             :publishing-directory "./public"
              :with-author nil
              :with-toc nil
              :section-numbers nil

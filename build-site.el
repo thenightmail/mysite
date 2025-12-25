@@ -18,7 +18,7 @@
 ;; Define the publishing project
 (setq org-publish-project-alist
       (list
-       (list "Andrew Chitester's Website"
+       (list "Andrew Chitester's website"
              :author "Andrew Chitester"
              :email "andchi@fastmail.com"
              :recursive t
@@ -29,6 +29,7 @@
              :section-numbers nil
              :time-stamp-file nil
              :auto-sitemap t
+             :sitemap-title "Andrew Chitester's sitemap"
              :publishing-function 'org-html-publish-to-html)))
 
 ;; Customize the HTML output

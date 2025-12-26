@@ -1,63 +1,111 @@
 #+title: Git
 #+index: Git
 #+options: num:nil toc:1
-* git baby steps
-<2025-08-24 Sun>
+* day 7
+<2025-12-22 Mon>
 
-My goal is to improve enough such that I am able to communicate and
-contribute to whatever project.
+I am setting up an agenda to outline my studies leading up to March 31st when
+the GiSoC applications are due. I also cloned the git.github.io repo so I can
+see all of the developer pages from Emacs. This is important because when they
+release those microprojects, I want to be ready to work on them, so I will be
+fetching the changes to this repo on Emacs startup. I found the fun Gitstery
+repository which is a murder mystery that you can solve by using git commands.
+* day 6
+<2025-12-21 Sun>
 
-These notes are meant to serve as a roadmap for people that come after
-me, and are looking to learn enough to be useful and contribute to git.
-* day 1
+I'm moving all of my private repositories off of github and using git over ssh
+to work on them from my laptop.
+
+I learned about rebase and feel enlightened. The words my high school math
+teacher told me when he found out that I wanted to study computer science echo
+in my head
+
+#+begin_quote
+With great power comes great responsibility.
+* day 5
+<2025-12-07 Sun>
+
+Today I learned how to install git on Windows and helped install git on a
+colleagues machine. They use Codium, which seems to be pretty similar to VSCode.
+It was satisfying installing git and then seeing their editor now capable of
+committing their changes.
+* day 4
+<2025-12-05 Fri>
+
+Found more resources:
+- [[https://www.youtube.com/watch?v=MYn0DHnQggo&t=679][The Zen of Git]] youtube video
+- [[https://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html][think like a git]] resource
+* day 3
+<2025-10-17 Fri>
 :LOGBOOK:
-CLOCK: [2025-10-13 Mon 12:56]--[2025-10-13 Mon 13:47] =>  0:51
+CLOCK: [2025-10-17 Fri 07:21]--[2025-10-17 Fri 08:07] =>  0:46
 :END:
-<2025-10-13 Mon>
+Using the baby-git and Decoding git book, I've found the following resources;
+- https://www.gnu.org/software/libc/manual/html_node/index.html
+- https://pubs.opengroup.org/onlinepubs/9699919799/
+- https://www.cplusplus.com/reference/
+- https://zlib.net/manual.html
+- https://zlib.net/zlib_how.html
 
-Here are some resources I'm looking into:
-- [[https://github.com/ragtux/cnility][k&r]]
+Git uses the SHA-1 hash function to map file contents to hash values.
 
-- [[https://bitbucket.org/jacobstopak/baby-git][baby-git]]
+There are the following four basic components in Git's initial commit:
+- objects
+- an object database
+- a current directory cache
+- a working directory
+** Objects
+Object types:
+- blob
+- tree
+- commit
 
-- [[https://git-scm.com/book/en/v2][pro git]]
+An object is an abstraction of data and metadata. It is indexed and referenced
+through its hash value. The name of an object is its hash value. This hash value
+is used to refer and look up to the specific content.
 
-- [[https://gitexercises.fracz.com/][git exercises]]
-
-** TIL about git shortlog
-This feature is awesome, you can use it to easily see how many commits
-people are making to a repository. With the command
-#+begin_src sh
-git shortlog -ns
-#+end_src
-you are able to see who has committed the most to a repository. Here is
-the output of that command on the git repo;
+The general structure of an object is:
 #+begin_example
- 27457  Junio C Hamano
-  4611  Jeff King
-  2390  Johannes Schindelin
-  1945  Ævar Arnfjörð Bjarmason
-  1824  Nguyễn Thái Ngọc Duy
-  1810  Patrick Steinhardt
-  1401  Shawn O. Pearce
-  1314  René Scharfe
-  1203  Elijah Newren
-  1118  Linus Torvalds
-   954  Michael Haggerty
-   902  brian m. carlson
+object tag
+' '                 (single space)
+size of object data (in bytes)
+'\0'                (null character)
+object binary data
 #+end_example
-Fascinating. Junio C Hamano is legendary!
+
+The first part of an object consists of the object metadata. The second part
+consists of the object data (the binary data). The space and null byte are used
+to seperate the two. The object tag is simply what type of object it is (one of:
+blob, tree, commit) and the size of the object data in bytes before deflation.
+
+*** Blobs (binary large objects)
+Woah that just blew my mind, didn't know blobs are just binary large objects.
+Any file that the user adds could be a blob, it sould be the binary
+representation of a video, plaintext, or any file. Git generates a blob object
+that is named, indexed and referenced through the deflated blob objects SHA-1
+hash value.
+
+*** Tree object
+A tree object contains a list of files aded to a repository. each file has a
+mode, path and sha-1 hash. The size of the tree is the sum of the sizes of the
+file information entries in the tree object data.
+
+*** Commit object
+A commit contains the hash value of a tree object being committed ahd the hash
+value of any parent tree objects specified by the user, metadata about the user
+who committed the tree, the time and date when the commit was made and a
+user-supplied comment known today as the commit message.
 * day 2
 <2025-10-14 Tue>
 :LOGBOOK:
 CLOCK: [2025-10-14 Tue 11:18]--[2025-10-14 Tue 11:57] =>  0:39
 :END:
 
-Today I am exploring the git source code and trying to figure out how
-things work.
+Today I am exploring the git source code and trying to figure out how things
+work.
 ** Finding list of commands
-Git has lots of commands. Here is how you can find where the commands
-are in the source. I used the command
+Git has lots of commands. Here is how you can find where the commands are in the
+source. I used the command
 #+begin_src sh
 grep -nr "list of commands"
 #+end_src
@@ -126,101 +174,49 @@ static struct option builtin_add_options[] = {
 #+end_src
 
 Okay ... That is how it works.
-* day 3
-<2025-10-17 Fri>
+* day 1
 :LOGBOOK:
-CLOCK: [2025-10-17 Fri 07:21]--[2025-10-17 Fri 08:07] =>  0:46
+CLOCK: [2025-10-13 Mon 12:56]--[2025-10-13 Mon 13:47] =>  0:51
 :END:
-Using the baby-git and Decoding git book, I've found the following resources;
-- https://www.gnu.org/software/libc/manual/html_node/index.html
-- https://pubs.opengroup.org/onlinepubs/9699919799/
-- https://www.cplusplus.com/reference/
-- https://zlib.net/manual.html
-- https://zlib.net/zlib_how.html
+<2025-10-13 Mon>
 
-Git uses the SHA-1 hash function to map file contents to hash values.
+Here are some resources I'm looking into:
+- [[https://github.com/ragtux/cnility][k&r]]
 
-There are the following four basic components in Git's initial commit:
-- objects
-- an object database
-- a current directory cache
-- a working directory
-** Objects
-Object types:
-- blob
-- tree
-- commit
+- [[https://bitbucket.org/jacobstopak/baby-git][baby-git]]
 
-An object is an abstraction of data and metadata. It is indexed and
-referenced through its hash value. The name of an object is its hash
-value. This hash value is used to refer and look up to the specific
-content.
+- [[https://git-scm.com/book/en/v2][pro git]]
 
-The general structure of an object is:
+- [[https://gitexercises.fracz.com/][git exercises]]
+
+** TIL about git shortlog
+This feature is awesome, you can use it to easily see how many commits people
+are making to a repository. With the command
+#+begin_src sh
+git shortlog -ns
+#+end_src
+you are able to see who has committed the most to a repository. Here is the
+output of that command on the git repo;
 #+begin_example
-object tag
-' '                 (single space)
-size of object data (in bytes)
-'\0'                (null character)
-object binary data
+ 27457  Junio C Hamano
+  4611  Jeff King
+  2390  Johannes Schindelin
+  1945  Ævar Arnfjörð Bjarmason
+  1824  Nguyễn Thái Ngọc Duy
+  1810  Patrick Steinhardt
+  1401  Shawn O. Pearce
+  1314  René Scharfe
+  1203  Elijah Newren
+  1118  Linus Torvalds
+   954  Michael Haggerty
+   902  brian m. carlson
 #+end_example
+Fascinating. Junio C Hamano is legendary!
+* git baby steps
+<2025-08-24 Sun>
 
-The first part of an object consists of the object metadata. The second
-part consists of the object data (the binary data). The space and null
-byte are used to seperate the two. The object tag is simply what type of
-object it is (one of: blob, tree, commit) and the size of the object
-data in bytes before deflation.
+My goal is to improve enough such that I am able to communicate and contribute
+to whatever project.
 
-*** Blobs (binary large objects)
-Woah that just blew my mind, didn't know blobs are just binary large
-objects. Any file that the user adds could be a blob, it sould be the
-binary representation of a video, plaintext, or any file. Git generates
-a blob object that is named, indexed and referenced through the deflated
-blob objects SHA-1 hash value.
-
-*** Tree object
-A tree object contains a list of files aded to a repository. each file
-has a mode, path and sha-1 hash. The size of the tree is the sum of the
-sizes of the file information entries in the tree object data.
-
-*** Commit object
-A commit contains the hash value of a tree object being committed ahd
-the hash value of any parent tree objects specified by the user,
-metadata about the user who committed the tree, the time and date when
-the commit was made and a user-supplied comment known today as the
-commit message.
-* day 4
-<2025-12-05 Fri>
-
-Found more resources:
-- [[https://www.youtube.com/watch?v=MYn0DHnQggo&t=679][The Zen of Git]] youtube video
-- [[https://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html][think like a git]] resource
-* day 5
-<2025-12-07 Sun>
-
-Today I learned how to install git on Windows and helped install git on
-a colleagues machine. They use Codium, which seems to be pretty similar
-to VSCode. It was satisfying installing git and then seeing their editor
-now capable of committing their changes.
-* day 6
-<2025-12-21 Sun>
-
-I'm moving all of my private repositories off of github and using git
-over ssh to work on them from my laptop.
-
-I learned about rebase and feel enlightened. The words my high school
-math teacher told me when he found out that I wanted to study computer
-science echo in my head
-
-#+begin_quote
-With great power comes great responsibility
-#+end_quote
-* day 7
-<2025-12-22 Mon>
-
-I am setting up an agenda to outline my studies leading up to March 31st when
-the GSoC applications are due. I also cloned the git.github.io repo so I can see
-all of the developer pages from Emacs. This is important because when they
-release those microprojects, I want to be ready to work on them, so I will be
-fetching the changes to this repo on Emacs startup. I found the fun Gitstery
-repository which is a murder mystery that you can solve by using git commands.
+These notes are meant to serve as a roadmap for people that come after me, and
+are looking to learn enough to be useful and contribute to git.

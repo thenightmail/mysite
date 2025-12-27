@@ -1,22 +1,45 @@
 #+title: Git
 #+index: Git
 #+options: num:nil toc:1
+* day 8
+<2025-12-26 Fri>
+
+I am not sure how to best use this site. It seems that I need more structure.
+With that said, I am returning to the baby-git repository and the Decoding Git
+book in order to understand the initial commit of Git.
+
+My goal is to get through this book before January 22nd which is when the next
+semester starts. I've gone through Part 1 already, so I am reviewing that and
+then moving on to Part 2.
+
+It'd be kind of neat to traverse the entirety of Git's code by starting at the
+initial commit and checking out the next commit until getting to the HEAD.
+
+Here is a summary of the history of Git:
+
+https://about.gitlab.com/blog/journey-through-gits-20-year-history/
+
+I used grep in the git.github.io repo in order to find where people were talking
+about "Emacs", "Magit", "GDB" or "gdb". These tools seem important to me, and
+I'd like to see if other people are using them. I installed the lei package, but
+haven't set much up with it or unsubscribed from the mailing list.
+
 * day 7
 <2025-12-22 Mon>
 
 I am setting up an agenda to outline my studies leading up to March 31st when
-the GiSoC applications are due. I also cloned the git.github.io repo so I can
-see all of the developer pages from Emacs. This is important because when they
+the GSoC applications are due. I also cloned the git.github.io repo so I can
+see the developer pages from Emacs. This is important because when they
 release those microprojects, I want to be ready to work on them, so I will be
 fetching the changes to this repo on Emacs startup. I found the fun Gitstery
-repository which is a murder mystery that you can solve by using git commands.
+repository which is a murder mystery that you can solve by using Git commands.
 * day 6
 <2025-12-21 Sun>
 
-I'm moving all of my private repositories off of github and using git over ssh
+I'm moving all of my private repositories off of GitHub and using Git over SSH
 to work on them from my laptop.
 
-I learned about rebase and feel enlightened. The words my high school math
+I learned about `git rebase` and feel enlightened. The words my high school math
 teacher told me when he found out that I wanted to study computer science echo
 in my head
 
@@ -25,7 +48,7 @@ With great power comes great responsibility.
 * day 5
 <2025-12-07 Sun>
 
-Today I learned how to install git on Windows and helped install git on a
+Today I learned how to install Git on Windows and helped install Git on a
 colleagues machine. They use Codium, which seems to be pretty similar to VSCode.
 It was satisfying installing git and then seeing their editor now capable of
 committing their changes.
@@ -33,14 +56,14 @@ committing their changes.
 <2025-12-05 Fri>
 
 Found more resources:
-- [[https://www.youtube.com/watch?v=MYn0DHnQggo&t=679][The Zen of Git]] youtube video
+- [[https://www.youtube.com/watch?v=MYn0DHnQggo&t=679][The Zen of Git]] YouTube video
 - [[https://think-like-a-git.net/sections/experimenting-with-git/references-make-commits-reachable.html][think like a git]] resource
 * day 3
 <2025-10-17 Fri>
 :LOGBOOK:
 CLOCK: [2025-10-17 Fri 07:21]--[2025-10-17 Fri 08:07] =>  0:46
 :END:
-Using the baby-git and Decoding git book, I've found the following resources;
+Using the baby-git and Decoding Git book, I've found the following resources;
 - https://www.gnu.org/software/libc/manual/html_node/index.html
 - https://pubs.opengroup.org/onlinepubs/9699919799/
 - https://www.cplusplus.com/reference/
@@ -75,23 +98,23 @@ object binary data
 
 The first part of an object consists of the object metadata. The second part
 consists of the object data (the binary data). The space and null byte are used
-to seperate the two. The object tag is simply what type of object it is (one of:
+to separate the two. The object tag is simply what type of object it is (one of:
 blob, tree, commit) and the size of the object data in bytes before deflation.
 
 *** Blobs (binary large objects)
-Woah that just blew my mind, didn't know blobs are just binary large objects.
-Any file that the user adds could be a blob, it sould be the binary
-representation of a video, plaintext, or any file. Git generates a blob object
+Whoa that just blew my mind, didn't know blobs are just binary large objects.
+Any file that the user adds could be a blob, it should be the binary
+representation of a video, plain text, or any file. Git generates a blob object
 that is named, indexed and referenced through the deflated blob objects SHA-1
 hash value.
 
 *** Tree object
-A tree object contains a list of files aded to a repository. each file has a
-mode, path and sha-1 hash. The size of the tree is the sum of the sizes of the
+A tree object contains a list of files added to a repository. Each file has a
+mode, path and spa-1 hash. The size of the tree is the sum of the sizes of the
 file information entries in the tree object data.
 
 *** Commit object
-A commit contains the hash value of a tree object being committed ahd the hash
+A commit contains the hash value of a tree object being committed and the hash
 value of any parent tree objects specified by the user, metadata about the user
 who committed the tree, the time and date when the commit was made and a
 user-supplied comment known today as the commit message.
@@ -101,7 +124,7 @@ user-supplied comment known today as the commit message.
 CLOCK: [2025-10-14 Tue 11:18]--[2025-10-14 Tue 11:57] =>  0:39
 :END:
 
-Today I am exploring the git source code and trying to figure out how things
+Today I am exploring the Git source code and trying to figure out how things
 work.
 ** Finding list of commands
 Git has lots of commands. Here is how you can find where the commands are in the
@@ -131,7 +154,7 @@ In that file is the list of commands. Here are the first and last five;
 "worktree"
 "write-tree"
 #+end_example
-** How does git add work?
+** How does `git add` work?
 Let's focus on a command I've probably used hundreds of times already:
 
 #+begin_src sh
@@ -189,14 +212,14 @@ Here are some resources I'm looking into:
 
 - [[https://gitexercises.fracz.com/][git exercises]]
 
-** TIL about git shortlog
+** TIL about `git shortlog`
 This feature is awesome, you can use it to easily see how many commits people
 are making to a repository. With the command
 #+begin_src sh
 git shortlog -ns
 #+end_src
 you are able to see who has committed the most to a repository. Here is the
-output of that command on the git repo;
+output of that command on the Git repository;
 #+begin_example
  27457  Junio C Hamano
   4611  Jeff King
@@ -218,5 +241,5 @@ Fascinating. Junio C Hamano is legendary!
 My goal is to improve enough such that I am able to communicate and contribute
 to whatever project.
 
-These notes are meant to serve as a roadmap for people that come after me, and
-are looking to learn enough to be useful and contribute to git.
+These notes are meant to serve as a road map for people that come after me, and
+are looking to learn enough to be useful and contribute to Git.

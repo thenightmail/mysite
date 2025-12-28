@@ -22,4 +22,10 @@ did it to teach us how to think."
 - https://github.com/tgvaughan/sicm
 * Functional Differential Geometry
 - [[https://duckduckgo.com/l/?uddg=https%3A%2F%2Fmitp-content-server.mit.edu%2Fbooks%2Fcontent%2Fsectbyfn%2Fbooks_pres_0%2F9580%2F9580.pdf%3Fdl%3D1&rut=5f69f101ae3a0ea1c91c9cb924e35813406c729fd48b5cfa3717e9c8f03d60b0][download]]
-* The Little Books by Dan Friedman
+* The Little Schemer
+* The Reasoned Schemer
+* The Seasoned Schemer
+* Discrete Mathematics and Functional Programming
+* Learn Physics with Functional Programming
+* Scheme and the Art of Programming
+* Decoding Git

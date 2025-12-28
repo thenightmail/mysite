@@ -1,6 +1,81 @@
 #+title: Git
 #+index: Git
 #+options: num:nil toc:1
+* day 9
+<2025-12-27 Sat>
+** gdb Demonstration
+
+Here is the relevant mailing list discussion that I based this on
+https://lore.kernel.org/git/xmqqbjjqslgq.fsf@gitster.g/T/#m7d9288bd28a9f9a51781bf42330a9c15fe9016ff
+
+There is a bug that offers the chance to learn how to use gdb. If you are
+feeling ambitious, go ahead and attempt solving this on your own before reading
+my proposed solution.
+
+The bug is that the command `git restore -source branch` gives an error message
+that seems to be a typo.
+
+#+begin_src shell
+$ git checkout 66ce5f8e8872f0183bb137911c52b07f1f242d13
+#+end_src
+
+Go ahead and try it on that commit and then continue reading for a demonstration
+of how to use gdb to diagnose what is going wrong.
+*** Tutorial
+Build git with meson (or use the Makefile). See [[https://github.com/git/git/blob/master/meson.build][here]].
+
+#+begin_src shell
+$ meson setup build/
+$ cd build
+$ meson compile
+#+end_src
+
+Use gdb to find the bug
+
+#+begin_src shell
+$ gdb ./git
+(gdb) run restore -source branch
+#+end_src
+
+Aha! There is the error
+#+begin_src shell
+fatal: could not resolve ource
+#+end_src
+
+which seems like a typo? ...
+
+It isn't. Set a break point for the `die` function. Yes that is really what the
+function responsible for bringing you that fatal error is. Run until you get
+there and observe.
+
+#+begin_src shell
+(gdb) break die
+(gdb) r
+Starting program: ~/repos/github.com/git/git/build/git restore -source branch
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, die (err=0x5555559d8b6a "could not resolve %s") at ../usage.c:202
+202     {
+(gdb)
+#+end_src
+
+You will see the reason for the issue if you have the coding guidelines in your
+marrow (further inspection is needed to understand why the bug happens).
+
+From the `Documentation/CodingGuidelines.adoc` we have:
+
+#+begin_quote
+/Enclose the subject of an error inside a pair of single quotes/
+#+end_quote
+
+among other tips. And that is how we fix it, wrapping that %s with single
+quotes.
+
+It feels like I am only scratching the surface of what is possible with gdb, but
+I am happy to demonstrate some usage based on a trivial patch. I have plans to
+look for more interesting one line changes and continue this journey in the
+future.
 * day 8
 <2025-12-26 Fri>
 
@@ -45,6 +120,7 @@ in my head
 
 #+begin_quote
 With great power comes great responsibility.
+#+end_quote
 * day 5
 <2025-12-07 Sun>
 

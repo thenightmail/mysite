@@ -199,21 +199,143 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#orgad1386a">day 8</a></li>
-<li><a href="#org643447e">day 7</a></li>
-<li><a href="#org0cc43b1">day 6</a></li>
-<li><a href="#org9d249b9">day 5</a></li>
-<li><a href="#orgf6a7954">day 4</a></li>
-<li><a href="#org34606b3">day 3</a></li>
-<li><a href="#org3b9fbe9">day 2</a></li>
-<li><a href="#orga9f9eb7">day 1</a></li>
-<li><a href="#orge562e59">git baby steps</a></li>
+<li><a href="#orgfb17d42">day 9</a></li>
+<li><a href="#org941502a">day 8</a></li>
+<li><a href="#orgd7ce27f">day 7</a></li>
+<li><a href="#org8d9d592">day 6</a></li>
+<li><a href="#org2861907">day 5</a></li>
+<li><a href="#orgb7dc28c">day 4</a></li>
+<li><a href="#orgdc5c9c8">day 3</a></li>
+<li><a href="#org9b4245e">day 2</a></li>
+<li><a href="#org8e40cd0">day 1</a></li>
+<li><a href="#org747d485">git baby steps</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgad1386a" class="outline-2">
-<h2 id="orgad1386a">day 8</h2>
-<div class="outline-text-2" id="text-orgad1386a">
+<div id="outline-container-orgfb17d42" class="outline-2">
+<h2 id="orgfb17d42">day 9</h2>
+<div class="outline-text-2" id="text-orgfb17d42">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2025-12-27 Sat&gt;</span></span>
+</p>
+</div>
+<div id="outline-container-orge40405c" class="outline-3">
+<h3 id="orge40405c">gdb Demonstration</h3>
+<div class="outline-text-3" id="text-orge40405c">
+<p>
+Here is the relevant mailing list discussion that I based this on
+<a href="https://lore.kernel.org/git/xmqqbjjqslgq.fsf@gitster.g/T/#m7d9288bd28a9f9a51781bf42330a9c15fe9016ff">https://lore.kernel.org/git/xmqqbjjqslgq.fsf@gitster.g/T/#m7d9288bd28a9f9a51781bf42330a9c15fe9016ff</a>
+</p>
+
+<p>
+There is a bug that offers the chance to learn how to use gdb. If you are
+feeling ambitious, go ahead and attempt solving this on your own before reading
+my proposed solution.
+</p>
+
+<p>
+The bug is that the command `git restore -source branch` gives an error message
+that seems to be a typo.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ git checkout 66ce5f8e8872f0183bb137911c52b07f1f242d13
+</pre>
+</div>
+
+<p>
+Go ahead and try it on that commit and then continue reading for a demonstration
+of how to use gdb to diagnose what is going wrong.
+</p>
+</div>
+<div id="outline-container-org83c98bc" class="outline-4">
+<h4 id="org83c98bc">Tutorial</h4>
+<div class="outline-text-4" id="text-org83c98bc">
+<p>
+Build git with meson (or use the Makefile). See <a href="https://github.com/git/git/blob/master/meson.build">here</a>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ meson setup build/
+$ cd build
+$ meson compile
+</pre>
+</div>
+
+<p>
+Use gdb to find the bug
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">$ gdb ./git
+(gdb) run restore -source branch
+</pre>
+</div>
+
+<p>
+Aha! There is the error
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">fatal: could not resolve ource
+</pre>
+</div>
+
+<p>
+which seems like a typo? &#x2026;
+</p>
+
+<p>
+It isn't. Set a break point for the `die` function. Yes that is really what the
+function responsible for bringing you that fatal error is. Run until you get
+there and observe.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-shell">(gdb) break die
+(gdb) r
+Starting program: ~/repos/github.com/git/git/build/git restore -source branch
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+
+Breakpoint 1, die (err=0x5555559d8b6a "could not resolve %s") at ../usage.c:202
+202     {
+(gdb)
+</pre>
+</div>
+
+<p>
+You will see the reason for the issue if you have the coding guidelines in your
+marrow (further inspection is needed to understand why the bug happens).
+</p>
+
+<p>
+From the `Documentation/CodingGuidelines.adoc` we have:
+</p>
+
+<blockquote>
+<p>
+<i>Enclose the subject of an error inside a pair of single quotes</i>
+</p>
+</blockquote>
+
+<p>
+among other tips. And that is how we fix it, wrapping that %s with single
+quotes.
+</p>
+
+<p>
+It feels like I am only scratching the surface of what is possible with gdb, but
+I am happy to demonstrate some usage based on a trivial patch. I have plans to
+look for more interesting one line changes and continue this journey in the
+future.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-org941502a" class="outline-2">
+<h2 id="org941502a">day 8</h2>
+<div class="outline-text-2" id="text-org941502a">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-12-26 Fri&gt;</span></span>
 </p>
@@ -252,9 +374,9 @@ haven't set much up with it or unsubscribed from the mailing list.
 </div>
 </div>
 
-<div id="outline-container-org643447e" class="outline-2">
-<h2 id="org643447e">day 7</h2>
-<div class="outline-text-2" id="text-org643447e">
+<div id="outline-container-orgd7ce27f" class="outline-2">
+<h2 id="orgd7ce27f">day 7</h2>
+<div class="outline-text-2" id="text-orgd7ce27f">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-12-22 Mon&gt;</span></span>
 </p>
@@ -269,9 +391,9 @@ repository which is a murder mystery that you can solve by using Git commands.
 </p>
 </div>
 </div>
-<div id="outline-container-org0cc43b1" class="outline-2">
-<h2 id="org0cc43b1">day 6</h2>
-<div class="outline-text-2" id="text-org0cc43b1">
+<div id="outline-container-org8d9d592" class="outline-2">
+<h2 id="org8d9d592">day 6</h2>
+<div class="outline-text-2" id="text-org8d9d592">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-12-21 Sun&gt;</span></span>
 </p>
@@ -287,15 +409,16 @@ teacher told me when he found out that I wanted to study computer science echo
 in my head
 </p>
 
+<blockquote>
 <p>
-#+begin<sub>quote</sub>
 With great power comes great responsibility.
 </p>
+</blockquote>
 </div>
 </div>
-<div id="outline-container-org9d249b9" class="outline-2">
-<h2 id="org9d249b9">day 5</h2>
-<div class="outline-text-2" id="text-org9d249b9">
+<div id="outline-container-org2861907" class="outline-2">
+<h2 id="org2861907">day 5</h2>
+<div class="outline-text-2" id="text-org2861907">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-12-07 Sun&gt;</span></span>
 </p>
@@ -308,9 +431,9 @@ committing their changes.
 </p>
 </div>
 </div>
-<div id="outline-container-orgf6a7954" class="outline-2">
-<h2 id="orgf6a7954">day 4</h2>
-<div class="outline-text-2" id="text-orgf6a7954">
+<div id="outline-container-orgb7dc28c" class="outline-2">
+<h2 id="orgb7dc28c">day 4</h2>
+<div class="outline-text-2" id="text-orgb7dc28c">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-12-05 Fri&gt;</span></span>
 </p>
@@ -324,9 +447,9 @@ Found more resources:
 </ul>
 </div>
 </div>
-<div id="outline-container-org34606b3" class="outline-2">
-<h2 id="org34606b3">day 3</h2>
-<div class="outline-text-2" id="text-org34606b3">
+<div id="outline-container-orgdc5c9c8" class="outline-2">
+<h2 id="orgdc5c9c8">day 3</h2>
+<div class="outline-text-2" id="text-orgdc5c9c8">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-10-17 Fri&gt;</span></span>
 </p>
@@ -355,9 +478,9 @@ There are the following four basic components in Git's initial commit:
 <li>a working directory</li>
 </ul>
 </div>
-<div id="outline-container-org0087be2" class="outline-3">
-<h3 id="org0087be2">Objects</h3>
-<div class="outline-text-3" id="text-org0087be2">
+<div id="outline-container-org58092a0" class="outline-3">
+<h3 id="org58092a0">Objects</h3>
+<div class="outline-text-3" id="text-org58092a0">
 <p>
 Object types:
 </p>
@@ -376,7 +499,7 @@ is used to refer and look up to the specific content.
 <p>
 The general structure of an object is:
 </p>
-<pre class="example" id="org1e34fe8">
+<pre class="example" id="org892814f">
 object tag
 ' '                 (single space)
 size of object data (in bytes)
@@ -392,9 +515,9 @@ blob, tree, commit) and the size of the object data in bytes before deflation.
 </p>
 </div>
 
-<div id="outline-container-orgec566c9" class="outline-4">
-<h4 id="orgec566c9">Blobs (binary large objects)</h4>
-<div class="outline-text-4" id="text-orgec566c9">
+<div id="outline-container-orgc0c68de" class="outline-4">
+<h4 id="orgc0c68de">Blobs (binary large objects)</h4>
+<div class="outline-text-4" id="text-orgc0c68de">
 <p>
 Whoa that just blew my mind, didn't know blobs are just binary large objects.
 Any file that the user adds could be a blob, it should be the binary
@@ -405,9 +528,9 @@ hash value.
 </div>
 </div>
 
-<div id="outline-container-orgda46b72" class="outline-4">
-<h4 id="orgda46b72">Tree object</h4>
-<div class="outline-text-4" id="text-orgda46b72">
+<div id="outline-container-orgd66d6b4" class="outline-4">
+<h4 id="orgd66d6b4">Tree object</h4>
+<div class="outline-text-4" id="text-orgd66d6b4">
 <p>
 A tree object contains a list of files added to a repository. Each file has a
 mode, path and spa-1 hash. The size of the tree is the sum of the sizes of the
@@ -416,9 +539,9 @@ file information entries in the tree object data.
 </div>
 </div>
 
-<div id="outline-container-orgf7e9126" class="outline-4">
-<h4 id="orgf7e9126">Commit object</h4>
-<div class="outline-text-4" id="text-orgf7e9126">
+<div id="outline-container-org92a9b04" class="outline-4">
+<h4 id="org92a9b04">Commit object</h4>
+<div class="outline-text-4" id="text-org92a9b04">
 <p>
 A commit contains the hash value of a tree object being committed and the hash
 value of any parent tree objects specified by the user, metadata about the user
@@ -429,9 +552,9 @@ user-supplied comment known today as the commit message.
 </div>
 </div>
 </div>
-<div id="outline-container-org3b9fbe9" class="outline-2">
-<h2 id="org3b9fbe9">day 2</h2>
-<div class="outline-text-2" id="text-org3b9fbe9">
+<div id="outline-container-org9b4245e" class="outline-2">
+<h2 id="org9b4245e">day 2</h2>
+<div class="outline-text-2" id="text-org9b4245e">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-10-14 Tue&gt;</span></span>
 </p>
@@ -440,9 +563,9 @@ Today I am exploring the Git source code and trying to figure out how things
 work.
 </p>
 </div>
-<div id="outline-container-orga691257" class="outline-3">
-<h3 id="orga691257">Finding list of commands</h3>
-<div class="outline-text-3" id="text-orga691257">
+<div id="outline-container-org5038a68" class="outline-3">
+<h3 id="org5038a68">Finding list of commands</h3>
+<div class="outline-text-3" id="text-org5038a68">
 <p>
 Git has lots of commands. Here is how you can find where the commands are in the
 source. I used the command
@@ -456,7 +579,7 @@ source. I used the command
 to find that there is a list of commands in the git.c file;
 </p>
 
-<pre class="example" id="org1d61b0f">
+<pre class="example" id="org899e4a1">
 Documentation/MyFirstContribution.adoc:220:The list of commands lives in `git.c`.
 </pre>
 
@@ -464,7 +587,7 @@ Documentation/MyFirstContribution.adoc:220:The list of commands lives in `git.c`
 In that file is the list of commands. Here are the first and last five;
 </p>
 
-<pre class="example" id="orga0c2b72">
+<pre class="example" id="org864e499">
 "add"
 "am"
 "annotate"
@@ -479,9 +602,9 @@ In that file is the list of commands. Here are the first and last five;
 </pre>
 </div>
 </div>
-<div id="outline-container-org493f9ed" class="outline-3">
-<h3 id="org493f9ed">How does `git add` work?</h3>
-<div class="outline-text-3" id="text-org493f9ed">
+<div id="outline-container-org7c61b3d" class="outline-3">
+<h3 id="org7c61b3d">How does `git add` work?</h3>
+<div class="outline-text-3" id="text-org7c61b3d">
 <p>
 Let's focus on a command I've probably used hundreds of times already:
 </p>
@@ -535,9 +658,9 @@ Okay &#x2026; That is how it works.
 </div>
 </div>
 </div>
-<div id="outline-container-orga9f9eb7" class="outline-2">
-<h2 id="orga9f9eb7">day 1</h2>
-<div class="outline-text-2" id="text-orga9f9eb7">
+<div id="outline-container-org8e40cd0" class="outline-2">
+<h2 id="org8e40cd0">day 1</h2>
+<div class="outline-text-2" id="text-org8e40cd0">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-10-13 Mon&gt;</span></span>
 </p>
@@ -556,9 +679,9 @@ Here are some resources I'm looking into:
 </ul>
 </div>
 
-<div id="outline-container-org2b710be" class="outline-3">
-<h3 id="org2b710be">TIL about `git shortlog`</h3>
-<div class="outline-text-3" id="text-org2b710be">
+<div id="outline-container-org38152b7" class="outline-3">
+<h3 id="org38152b7">TIL about `git shortlog`</h3>
+<div class="outline-text-3" id="text-org38152b7">
 <p>
 This feature is awesome, you can use it to easily see how many commits people
 are making to a repository. With the command
@@ -571,7 +694,7 @@ are making to a repository. With the command
 you are able to see who has committed the most to a repository. Here is the
 output of that command on the Git repository;
 </p>
-<pre class="example" id="org1ea7e3f">
+<pre class="example" id="orgb0a7cd9">
 27457  Junio C Hamano
  4611  Jeff King
  2390  Johannes Schindelin
@@ -591,9 +714,9 @@ Fascinating. Junio C Hamano is legendary!
 </div>
 </div>
 </div>
-<div id="outline-container-orge562e59" class="outline-2">
-<h2 id="orge562e59">git baby steps</h2>
-<div class="outline-text-2" id="text-orge562e59">
+<div id="outline-container-org747d485" class="outline-2">
+<h2 id="org747d485">git baby steps</h2>
+<div class="outline-text-2" id="text-org747d485">
 <p>
 <span class="timestamp-wrapper"><span class="timestamp">&lt;2025-08-24 Sun&gt;</span></span>
 </p>
